@@ -7,7 +7,7 @@
             :to="{
               name: 'Home',
             }"
-            ><img src="../assets/images/fuzzies.png" alt="Home"
+            ><img src="../assets/images/FuzziesLogo.png" alt="Home"
           /></router-link>
           <!-- <span class="navbar-brand">Fuzzies</span> -->
           <button
@@ -119,12 +119,16 @@
         </div>
       </nav>
     </div>
-    <h1 class="heading">#1 Care providers</h1>
+    <LandingPage />
   </div>
 </template>
 
 <script>
-export default {};
+import LandingPage from "./LandingPage";
+
+export default {
+  components: { LandingPage },
+};
 </script>
 
 <style></style>
