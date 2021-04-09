@@ -7,7 +7,7 @@
             :to="{
               name: 'Home',
             }"
-            ><img src="../assets/images/FuzziesLogo.png" alt="Home"
+            ><img src="../assets/images/Fuzzies.png" alt="Home"
           /></router-link>
           <!-- <span class="navbar-brand">Fuzzies</span> -->
           <button
@@ -110,7 +110,13 @@
                 </li>
               </router-link>
             </ul>
-            <form class="d-flex">
+            <form class="d-flex justify-content-start">
+              <button
+                class="btn d-md-block d-lg-none d-xl-none me-3"
+                type="submit"
+              >
+                Sign up
+              </button>
               <button class="btn" type="submit">
                 Login
               </button>

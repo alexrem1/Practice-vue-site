@@ -17,5 +17,8 @@ footer {
   height: 70px;
   background-color: rgb(53 205 151 / 61%);
   padding-top: 30px;
+  bottom: 0;
+  position: relative;
+  width: 100%;
 }
 </style>
