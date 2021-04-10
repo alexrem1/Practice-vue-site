@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer mt-5">
+  <footer class="footer">
     <div class=" d-flex flex-row justify-content-evenly ">
       <i class="fab fa-twitter"></i>
       <i class="fab fa-instagram"></i>
@@ -13,7 +13,7 @@ export default {};
 </script>
 
 <style>
-footer {
+.footer {
   height: 70px;
   background-color: rgb(53 205 151 / 61%);
   padding-top: 30px;

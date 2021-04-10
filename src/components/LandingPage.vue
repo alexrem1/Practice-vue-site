@@ -360,15 +360,10 @@
       </div>
     </div>
   </div>
-
-  <Footer />
 </template>
 
 <script>
-import Footer from "./Footer.vue";
-export default {
-  components: { Footer },
-};
+export default {};
 </script>
 
 <style scoped>

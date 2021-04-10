@@ -1,13 +1,17 @@
 <template>
-  <Navbar />
+  <div class="header-background">
+    <LandingPage />
+  </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import Navbar from "../components/Navbar.vue";
+import LandingPage from "../components/LandingPage";
 
 export default {
   name: "Home",
-  components: { Navbar },
+  components: { LandingPage },
 };
 </script>
+
+<style></style>
