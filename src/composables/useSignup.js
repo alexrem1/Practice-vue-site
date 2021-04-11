@@ -4,7 +4,7 @@ import { projectAuth } from "../firebase/config";
 const error = ref(null);
 const isPending = ref(false);
 
-const signup = async (email, password, displayName) => {
+const signup = async (email, password, username) => {
   // I want to reset that error value until we get a response so we're not constantly showing that error value to the user
   error.value = null;
   isPending.value = true;
@@ -17,7 +17,7 @@ const signup = async (email, password, displayName) => {
     if (!res) {
       throw new Error("Could not complete sign up");
     }
-    await res.user.updateProfile({ displayName });
+    await res.user.updateProfile({ username });
     error.value = null;
     isPending.value = false;
 

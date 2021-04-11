@@ -5,9 +5,12 @@
       <div class="height">
         <h1 class="heading ">
           We're the people you didn't know you needed!
-          <button class="btn">Sign up</button> with
+          <router-link :to="{ name: 'Signup' }">
+            <button class="btn">Sign up</button>
+          </router-link>
+          with
           <br />
-          <span class="">Fuzzies today</span>
+          <span>Fuzzies today</span>
         </h1>
       </div>
       <div class="height">
