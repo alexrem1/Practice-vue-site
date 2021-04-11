@@ -8,6 +8,7 @@
           }"
           ><img src="../assets/images/Fuzzies.png" alt="Home"
         /></router-link>
+        <!-- <span class="navbar-brand">Fuzzies</span> -->
         <button
           class="navbar-toggler"
           type="button"
@@ -50,7 +51,7 @@
                 <li>
                   <router-link
                     :to="{
-                      name: 'PetSitting',
+                      name: 'Home',
                     }"
                     ><a class="dropdown-item" href="#"
                       >Pet Sitting</a
@@ -61,7 +62,7 @@
                 <li>
                   <router-link
                     :to="{
-                      name: 'PetWalking',
+                      name: 'Home',
                     }"
                     ><a class="dropdown-item">Pet walking</a></router-link
                   >
@@ -70,7 +71,7 @@
                 <li>
                   <router-link
                     :to="{
-                      name: 'PetGrooming',
+                      name: 'Home',
                     }"
                   >
                     <a class="dropdown-item" href="#"
@@ -83,7 +84,7 @@
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: 'Enquiry',
+                  name: '',
                 }"
               >
                 <a class="nav-link">Book an Appointment </a>
@@ -92,7 +93,7 @@
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: 'Testimonials',
+                  name: '',
                 }"
               >
                 <a class="nav-link" href="#">Testimonials </a></router-link
@@ -100,7 +101,7 @@
             </li>
             <router-link
               :to="{
-                name: 'Contact',
+                name: '',
               }"
             >
               <li class="nav-item">
