@@ -1,5 +1,5 @@
 import firebase from "firebase/app";
-import "firebase/firestore ";
+import "firebase/firestore";
 import "firebase/auth";
 
 const firebaseConfig = {
@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 // init services
 const projectFirestore = firebase.firestore();
-const projectAuth = firebase.firebase.auth();
+const projectAuth = firebase.auth();
 firebase.firestore().settings({ experimentalForceLongPolling: true });
 
 // timestamp
