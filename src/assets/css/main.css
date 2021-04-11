@@ -10,6 +10,10 @@ body {
   background-color: #323a45;
 }
 
+.error {
+  color: red;
+}
+
 /* image background */
 .header-background {
   position: static;
