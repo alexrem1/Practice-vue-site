@@ -8,7 +8,6 @@
           }"
           ><img src="../assets/images/Fuzzies.png" alt="Home"
         /></router-link>
-        <!-- <span class="navbar-brand">Fuzzies</span> -->
         <button
           class="navbar-toggler"
           type="button"
@@ -51,7 +50,7 @@
                 <li>
                   <router-link
                     :to="{
-                      name: 'Home',
+                      name: 'PetSitting',
                     }"
                     ><a class="dropdown-item" href="#"
                       >Pet Sitting</a
@@ -62,7 +61,7 @@
                 <li>
                   <router-link
                     :to="{
-                      name: 'Home',
+                      name: 'PetWalking',
                     }"
                     ><a class="dropdown-item">Pet walking</a></router-link
                   >
@@ -71,7 +70,7 @@
                 <li>
                   <router-link
                     :to="{
-                      name: 'Home',
+                      name: 'PetGrooming',
                     }"
                   >
                     <a class="dropdown-item" href="#"
@@ -84,7 +83,7 @@
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: '',
+                  name: 'Enquiry',
                 }"
               >
                 <a class="nav-link">Book an Appointment </a>
@@ -93,7 +92,7 @@
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: '',
+                  name: 'Testimonials',
                 }"
               >
                 <a class="nav-link" href="#">Testimonials </a></router-link
@@ -101,7 +100,7 @@
             </li>
             <router-link
               :to="{
-                name: '',
+                name: 'Contact',
               }"
             >
               <li class="nav-item">
@@ -116,9 +115,15 @@
             >
               Sign up
             </button>
-            <button class="btn" type="submit">
-              Login
-            </button>
+            <router-link
+              :to="{
+                name: 'Login',
+              }"
+            >
+              <button class="btn">
+                Login
+              </button>
+            </router-link>
           </form>
         </div>
       </div>
