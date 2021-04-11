@@ -19,7 +19,8 @@
           />
         </div>
         <div class="error" v-if="error">{{ error }}</div>
-        <button class="btn mt-2">Log in</button>
+        <button v-if="!isPending" class="btn mt-2">Log in</button>
+        <button v-if="isPending" class="btn mt-2" disabled>Loading</button>
       </form>
     </div>
   </div>
@@ -30,7 +31,7 @@ import useLogin from "@/composables/useLogin";
 import { ref } from "vue";
 export default {
   setup() {
-    const { error, login } = useLogin(email, password);
+    const { error, login, isPending } = useLogin();
 
     const email = ref("");
     const password = ref("");
@@ -42,7 +43,7 @@ export default {
       }
     };
 
-    return { email, password, handleSubmit, error };
+    return { email, password, handleSubmit, error, isPending };
   },
 };
 </script>
