@@ -5,9 +5,6 @@
         <div class="mb-3">
           <label class="form-label">Email address</label>
           <input type="email" class="form-control" required v-model="email" />
-          <div class="form-text">
-            We'll never share your email with anyone else.
-          </div>
         </div>
         <div class="mb-3">
           <label class="form-label">Password</label>
@@ -19,8 +16,12 @@
           />
         </div>
         <div class="error" v-if="error">{{ error }}</div>
-        <button v-if="!isPending" class="btn mt-2">Log in</button>
-        <button v-if="isPending" class="btn mt-2" disabled>Loading</button>
+        <div class="d-flex justify-content-center">
+          <button v-if="!isPending" class="btn mt-5">Log in</button>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button v-if="isPending" class="btn mt-5" disabled>Loading</button>
+        </div>
       </form>
     </div>
   </div>

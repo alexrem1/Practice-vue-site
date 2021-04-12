@@ -23,13 +23,18 @@
             v-model="password"
           />
           <div class="form-text">
-            Your password must be 8-20 characters long, contain letters and
-            numbers, and must not contain spaces, special characters, or emoji.
+            Your password must be 8-20 characters long.
           </div>
         </div>
         <div class="error" v-if="error">{{ error }}</div>
-        <button v-if="!isPending" class="btn mt-2">Sign up</button>
-        <button v-if="isPending" class="btn mt-2" disabled>Loading</button>
+        <div class="d-flex justify-content-center">
+          <button v-if="!isPending" class="btn mt-5 align-center">
+            Sign up
+          </button>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button v-if="isPending" class="btn mt-5" disabled>Loading</button>
+        </div>
       </form>
     </div>
   </div>

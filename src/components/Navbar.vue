@@ -110,21 +110,30 @@
             </router-link>
           </ul>
           <form class="d-flex justify-content-start">
-            <button
-              class="btn d-md-block d-lg-none d-xl-none me-3"
-              type="submit"
+            <router-link
+              :to="{
+                name: 'Signup',
+              }"
             >
-              Sign up
-            </button>
+              <button
+                class="btn d-md-block d-lg-none d-xl-none me-3"
+                type="submit"
+              >
+                Sign up
+              </button>
+            </router-link>
             <router-link
               :to="{
                 name: 'Login',
               }"
             >
-              <button class="btn">
-                Login
+              <button class="btn me-3">
+                Log in
               </button>
             </router-link>
+            <button @click="handleSubmit" class="btn">
+              Log out
+            </button>
           </form>
         </div>
       </div>
@@ -133,7 +142,25 @@
 </template>
 
 <script>
-export default {};
+import useLogout from "../composables/useLogout";
+import { useRouter } from "vue-router";
+
+export default {
+  setup() {
+    const { error, logout } = useLogout();
+    const router = useRouter();
+
+    const handleSubmit = async () => {
+      await logout();
+      if (!error.value) {
+        console.log("User logged out");
+        router.push({ name: "Login" });
+      }
+    };
+
+    return { error, handleSubmit };
+  },
+};
 </script>
 
 <style></style>
