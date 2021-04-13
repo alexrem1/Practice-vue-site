@@ -84,10 +84,10 @@
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: '',
+                  name: 'Enquiry',
                 }"
               >
-                <a class="nav-link">Book an Appointment </a>
+                <a class="nav-link">Make an Enquiry </a>
               </router-link>
             </li>
             <li class="nav-item">

@@ -121,7 +121,7 @@
             </div>
             <div class="flex-grow-1 ms-3 heading">
               <p>
-                " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
+                " Just, <em>INCREDIBLE...</em> the specialists at Fuzzies
                 provided outstanding grooming and excellent care for my 3 German
                 Shepherds. I would recommend to everyone! "
               </p>
@@ -159,7 +159,7 @@
             </div>
             <div class="flex-grow-1 ms-3 heading">
               <p>
-                " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
+                " Just, <em>INCREDIBLE...</em> the specialists at Fuzzies
                 provided outstanding grooming and excellent care for my 3 German
                 Shepherds. I would recommend to everyone! "
               </p>
@@ -197,7 +197,7 @@
             </div>
             <div class="flex-grow-1 ms-3 heading" id="sm-quote">
               <p>
-                " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
+                " Just, <em>INCREDIBLE...</em> the specialists at Fuzzies
                 provided outstanding grooming and excellent care for my 3 German
                 Shepherds. I would recommend to everyone! "
               </p>
