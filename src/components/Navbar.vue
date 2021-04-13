@@ -109,31 +109,36 @@
               </li>
             </router-link>
           </ul>
+
           <form class="d-flex justify-content-start">
-            <router-link
-              :to="{
-                name: 'Signup',
-              }"
-            >
-              <button
-                class="btn d-md-block d-lg-none d-xl-none me-3"
-                type="submit"
+            <div v-if="user">
+              <button @click.prevent="handleClick" class="btn">
+                Log out
+              </button>
+            </div>
+            <div v-else>
+              <router-link
+                :to="{
+                  name: 'Signup',
+                }"
               >
-                Sign up
-              </button>
-            </router-link>
-            <router-link
-              :to="{
-                name: 'Login',
-              }"
-            >
-              <button class="btn me-3">
-                Log in
-              </button>
-            </router-link>
-            <button @click="handleSubmit" class="btn">
-              Log out
-            </button>
+                <button
+                  class="btn d-md-block d-lg-none d-xl-none m-1"
+                  type="submit"
+                >
+                  Sign up
+                </button>
+              </router-link>
+              <router-link
+                :to="{
+                  name: 'Login',
+                }"
+              >
+                <button class="btn m-1">
+                  Log in
+                </button>
+              </router-link>
+            </div>
           </form>
         </div>
       </div>
@@ -144,21 +149,23 @@
 <script>
 import useLogout from "../composables/useLogout";
 import { useRouter } from "vue-router";
+import getUser from "../composables/getUser";
 
 export default {
   setup() {
     const { error, logout } = useLogout();
     const router = useRouter();
+    const { user } = getUser();
 
-    const handleSubmit = async () => {
+    const handleClick = async () => {
       await logout();
       if (!error.value) {
         console.log("User logged out");
-        router.push({ name: "Login" });
+        router.push({ name: "Home" });
       }
     };
 
-    return { error, handleSubmit };
+    return { error, handleClick, user };
   },
 };
 </script>

@@ -1,197 +1,220 @@
 <template>
-  <!-- Start -->
-  <div class=" d-none d-lg-block">
-    <div class="container d-flex flex-row justify-content-center pb-5">
-      <div class="height">
-        <h1 class="heading ">
-          We're the people you didn't know you needed!
-          <router-link :to="{ name: 'Signup' }">
-            <button class="btn">Sign up</button>
-          </router-link>
-          with
-          <br />
-          <span>Fuzzies today</span>
-        </h1>
-      </div>
-      <div class="height">
-        <h1 class="heading ">
-          Our services are totally <u>free</u>. Every dog deserves
-          companionship.
-        </h1>
-      </div>
-    </div>
-  </div>
-  <div class=" d-none d-md-block d-lg-none" id="md-port">
-    <div class="container d-flex flex-row justify-content-center ">
-      <div class="height">
-        <h1 class="heading ">
-          We're the people you didn't know you needed!
-          <button class="btn">Sign up</button> with
-          <br />
-          <span class="">Fuzzies today</span>
-        </h1>
-      </div>
-      <div class="height">
-        <h1 class="heading ">
-          Our services are totally <u>free</u>. Every dog deserves
-          companionship.
-        </h1>
+  <div class="container-start">
+    <!-- Start -->
+    <div class=" d-none d-lg-block">
+      <div class="container d-flex flex-row justify-content-center pb-5 pt-5">
+        <div class="height">
+          <h1 class="heading ">
+            We're the people you didn't know you needed!
+            <router-link :to="{ name: 'Signup' }">
+              <button class="btn">Sign up</button>
+            </router-link>
+            with
+            <br />
+            <span>Fuzzies today</span>
+          </h1>
+        </div>
+        <div class="height">
+          <h1 class="heading ">
+            Our services are totally <u>free</u>. Every dog deserves
+            companionship.
+          </h1>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="d-none d-sm-block d-md-none" id="sm-port">
+    <div class=" d-none d-md-block d-lg-none" id="md-port">
+      <div class="container d-flex flex-row justify-content-center ">
+        <div class="height">
+          <h1 class="heading ">
+            We're the people you didn't know you needed!
+            <router-link
+              :to="{
+                name: 'Signup',
+              }"
+            >
+              <button class="btn">Sign up</button>
+            </router-link>
+            with
+            <br />
+            <span class="">Fuzzies today</span>
+          </h1>
+        </div>
+        <div class="height">
+          <h1 class="heading ">
+            Our services are totally <u>free</u>. Every dog deserves
+            companionship.
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-sm-block d-md-none" id="sm-port">
+      <div
+        class="container d-flex flex-column align-items-center justify-content-center "
+      >
+        <div class="height">
+          <h1 class="heading ">
+            We're the people you didn't know you needed!
+            <router-link
+              :to="{
+                name: 'Signup',
+              }"
+            >
+              <button class="btn">Sign up</button>
+            </router-link>
+            with
+            <br />
+            <span class="">Fuzzies today</span>
+          </h1>
+        </div>
+        <div class="height">
+          <h1 class="heading ">
+            Our services are totally <u>free</u>. Every dog deserves
+            companionship.
+          </h1>
+        </div>
+      </div>
+    </div>
+    <div class="d-block d-sm-none" id="xs-port">
+      <div
+        class="container d-flex flex-column align-items-center justify-content-center "
+      >
+        <div class="height">
+          <h1 class="heading ">
+            We're the people you didn't know you needed!
+            <router-link
+              :to="{
+                name: 'Signup',
+              }"
+            >
+              <button class="btn xs-btn">Sign up</button>
+            </router-link>
+            with
+            <br />
+            <span class="">Fuzzies today</span>
+          </h1>
+        </div>
+        <div class="height">
+          <h1 class="heading ">
+            Our services are totally <u>free</u>. Every dog deserves
+            companionship.
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quotes -->
+    <!-- lg+ scren size -->
     <div
-      class="container d-flex flex-column align-items-center justify-content-center "
+      class="container d-none d-lg-block d-flex flex-row justify-content-center pt-5 pb-5"
     >
-      <div class="height">
-        <h1 class="heading ">
-          We're the people you didn't know you needed!
-          <button class="btn">Sign up</button> with
-          <br />
-          <span class="">Fuzzies today</span>
-        </h1>
-      </div>
-      <div class="height">
-        <h1 class="heading ">
-          Our services are totally <u>free</u>. Every dog deserves
-          companionship.
-        </h1>
-      </div>
+      <figure class="text-center w-80 ">
+        <blockquote class="blockquote">
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <img
+                src="../assets/images/sazzad.jpg"
+                width="180"
+                height="180"
+                alt="..."
+                class="img-fluid img-quote"
+              />
+            </div>
+            <div class="flex-grow-1 ms-3 heading">
+              <p>
+                " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
+                provided outstanding grooming and excellent care for my 3 German
+                Shepherds. I would recommend to everyone! "
+              </p>
+            </div>
+          </div>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          <p class="text-light">
+            <cite title="Source Title"
+              >Dog Grooming Bay's CEO
+              <br />
+              Randy Seal</cite
+            >
+          </p>
+        </figcaption>
+      </figure>
     </div>
-  </div>
-  <div class="d-block d-sm-none" id="xs-port">
+
+    <!-- md - only -->
     <div
-      class="container d-flex flex-column align-items-center justify-content-center "
+      class="container d-none d-md-block d-lg-none d-flex flex-row justify-content-center pt-5 pb-5"
+      id="md-quote"
     >
-      <div class="height">
-        <h1 class="heading ">
-          We're the people you didn't know you needed!
-          <button class="btn xs-btn">Sign up</button> with
-          <br />
-          <span class="">Fuzzies today</span>
-        </h1>
-      </div>
-      <div class="height">
-        <h1 class="heading ">
-          Our services are totally <u>free</u>. Every dog deserves
-          companionship.
-        </h1>
-      </div>
+      <figure class="text-center w-100 ">
+        <blockquote class="blockquote">
+          <div class="d-flex align-items-center">
+            <div class="flex-shrink-0">
+              <img
+                src="../assets/images/sazzad.jpg"
+                width="180"
+                height="180"
+                alt="..."
+                class="img-fluid img-quote"
+              />
+            </div>
+            <div class="flex-grow-1 ms-3 heading">
+              <p>
+                " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
+                provided outstanding grooming and excellent care for my 3 German
+                Shepherds. I would recommend to everyone! "
+              </p>
+            </div>
+          </div>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          <p class="text-light">
+            <cite title="Source Title"
+              >Dog Grooming Bay's CEO
+              <br />
+              Randy Seal</cite
+            >
+          </p>
+        </figcaption>
+      </figure>
     </div>
-  </div>
 
-  <!-- Quotes -->
-  <!-- lg+ scren size -->
-  <div
-    class="container d-none d-lg-block d-flex flex-row justify-content-center pt-5 pb-5"
-  >
-    <figure class="text-center w-80 ">
-      <blockquote class="blockquote">
-        <div class="d-flex align-items-center">
-          <div class="flex-shrink-0">
-            <img
-              src="../assets/images/sazzad.jpg"
-              width="180"
-              height="180"
-              alt="..."
-              class="img-fluid img-quote"
-            />
+    <!-- mobile to sm -->
+    <div
+      class="container d-block d-sm-block d-md-none d-lg-none d-xl-none d-flex flex-row justify-content-center pt-5 pb-5"
+      id="sm-quote"
+    >
+      <figure class="text-center w-80 ">
+        <blockquote class="blockquote">
+          <div class="d-flex align-items-center ">
+            <div class="flex-shrink-0">
+              <img
+                src="../assets/images/sazzad.jpg"
+                width="140"
+                height="140"
+                alt="..."
+                class="img-fluid img-quote"
+              />
+            </div>
+            <div class="flex-grow-1 ms-3 heading" id="sm-quote">
+              <p>
+                " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
+                provided outstanding grooming and excellent care for my 3 German
+                Shepherds. I would recommend to everyone! "
+              </p>
+            </div>
           </div>
-          <div class="flex-grow-1 ms-3 heading">
-            <p>
-              " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
-              provided outstanding grooming and excellent care for my 3 German
-              Shepherds. I would recommend to everyone! "
-            </p>
-          </div>
-        </div>
-      </blockquote>
-      <figcaption class="blockquote-footer">
-        <p class="text-light">
-          <cite title="Source Title"
-            >Dog Grooming Bay's CEO
-            <br />
-            Randy Seal</cite
-          >
-        </p>
-      </figcaption>
-    </figure>
-  </div>
-
-  <!-- md - only -->
-  <div
-    class="container d-none d-md-block d-lg-none d-flex flex-row justify-content-center pt-5 pb-5"
-    id="md-quote"
-  >
-    <figure class="text-center w-100 ">
-      <blockquote class="blockquote">
-        <div class="d-flex align-items-center">
-          <div class="flex-shrink-0">
-            <img
-              src="../assets/images/sazzad.jpg"
-              width="180"
-              height="180"
-              alt="..."
-              class="img-fluid img-quote"
-            />
-          </div>
-          <div class="flex-grow-1 ms-3 heading">
-            <p>
-              " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
-              provided outstanding grooming and excellent care for my 3 German
-              Shepherds. I would recommend to everyone! "
-            </p>
-          </div>
-        </div>
-      </blockquote>
-      <figcaption class="blockquote-footer">
-        <p class="text-light">
-          <cite title="Source Title"
-            >Dog Grooming Bay's CEO
-            <br />
-            Randy Seal</cite
-          >
-        </p>
-      </figcaption>
-    </figure>
-  </div>
-
-  <!-- mobile to sm -->
-  <div
-    class="container d-block d-sm-block d-md-none d-lg-none d-xl-none d-flex flex-row justify-content-center pt-5 pb-5"
-    id="sm-quote"
-  >
-    <figure class="text-center w-80 ">
-      <blockquote class="blockquote">
-        <div class="d-flex align-items-center ">
-          <div class="flex-shrink-0">
-            <img
-              src="../assets/images/sazzad.jpg"
-              width="140"
-              height="140"
-              alt="..."
-              class="img-fluid img-quote"
-            />
-          </div>
-          <div class="flex-grow-1 ms-3 heading" id="sm-quote">
-            <p>
-              " Just, <em>INCREDIBLE...</em> the veterinarians at Fuzzies
-              provided outstanding grooming and excellent care for my 3 German
-              Shepherds. I would recommend to everyone! "
-            </p>
-          </div>
-        </div>
-      </blockquote>
-      <figcaption class="blockquote-footer">
-        <p class="text-light">
-          <cite title="Source Title"
-            >Dog Grooming Bay's CEO
-            <br />
-            Randy Seal</cite
-          >
-        </p>
-      </figcaption>
-    </figure>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+          <p class="text-light">
+            <cite title="Source Title"
+              >Dog Grooming Bay's CEO
+              <br />
+              Randy Seal</cite
+            >
+          </p>
+        </figcaption>
+      </figure>
+    </div>
   </div>
 
   <!-- Cards -->
@@ -445,5 +468,9 @@ a {
 
 .img-quote {
   border-radius: 100px;
+}
+
+.container-start {
+  min-height: 100vh;
 }
 </style>

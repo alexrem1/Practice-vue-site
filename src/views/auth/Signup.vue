@@ -2,7 +2,7 @@
   <div class="container">
     <div class="d-flex justify-content-center">
       <form @submit.prevent="handleSubmit" class="padding-signup">
-        <div class="mb-3">
+        <div class="mb-3 mt-5 ">
           <label class="form-label">Username</label>
           <input
             type="username"
@@ -10,12 +10,12 @@
             required
             v-model="username"
           />
-          <label class="form-label pt-3">Email address</label>
+          <label class="form-label mt-3">Email address</label>
           <input type="email" class="form-control" required v-model="email" />
           <div class="form-text">
             We'll never share your email with anyone else.
           </div>
-          <label class="form-label pt-3">Password</label>
+          <label class="form-label mt-3">Password</label>
           <input
             type="password"
             class="form-control"
@@ -33,7 +33,13 @@
           </button>
         </div>
         <div class="d-flex justify-content-center">
-          <button v-if="isPending" class="btn mt-5" disabled>Loading</button>
+          <button v-if="isPending" class="btn mt-5" disabled>
+            Loading
+          </button>
+          <div class="form-text mb-5">
+            Already have an account?
+            <router-link :to="{ name: 'Login' }"> Log in</router-link>
+          </div>
         </div>
       </form>
     </div>
@@ -58,7 +64,7 @@ export default {
       }
     };
 
-    return { email, password, handleSubmit, error, isPending };
+    return { email, password, username, handleSubmit, error, isPending };
   },
 };
 </script>
@@ -66,9 +72,5 @@ export default {
 <style scoped>
 .container {
   min-height: 85vh;
-}
-
-.padding-signup {
-  padding-top: 12%;
 }
 </style>
