@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyByY9gDGN62IxXfsleWTzSizyQt6wCQqjE",
@@ -13,13 +14,14 @@ const firebaseConfig = {
 
 // init firebase
 firebase.initializeApp(firebaseConfig);
+firebase.firestore().settings({ experimentalForceLongPolling: true });
 
 // init services
 const projectFirestore = firebase.firestore();
 const projectAuth = firebase.auth();
-firebase.firestore().settings({ experimentalForceLongPolling: true });
+const projectStorage = firebase.storage();
 
 // timestamp
 const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
-export { projectAuth, projectFirestore, timestamp };
+export { projectAuth, projectFirestore, projectStorage, timestamp };

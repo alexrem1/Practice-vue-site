@@ -8,12 +8,32 @@
         please make an enquiry. We will get back to you within 1-2 working days.
       </div>
 
+      <!-- Subject  -->
+      <div class="mb-3 d-flex justify-content-center">
+        <label>Subject</label>
+      </div>
+      <div class="mb-3 d-flex justify-content-center">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="What is the nature of your enquiry?"
+          required
+          v-model="subject"
+        />
+      </div>
+
       <!-- phone number -->
       <div class="mb-3 d-flex justify-content-center">
         <label>Phone number</label>
       </div>
       <div class="mb-3 d-flex justify-content-center">
-        <input type="number" class="form-control" required v-model="number" />
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Please provide your full phone number"
+          required
+          v-model="number"
+        />
       </div>
 
       <!-- description -->
@@ -45,7 +65,8 @@
 
       <div class="error mb-2 text-center"></div>
       <div class="d-flex justify-content-center">
-        <button class="btn m-5">Contact us</button>
+        <button v-if="!isPending" class="btn m-5">Contact us</button>
+        <button v-if="isPending" class="btn m-5">Saving...</button>
       </div>
     </form>
   </div>
@@ -53,17 +74,45 @@
 
 <script>
 import { ref } from "vue";
+import useStorage from "../composables/useStorage";
+import useCollection from "../composables/useCollection";
+import getUser from "../composables/getUser";
+import { timestamp } from "../firebase/config";
 
 export default {
   setup() {
+    const { url, filePath, uploadImage } = useStorage();
+    const { error, addDoc } = useCollection("enquiries");
+    const { user } = getUser();
+
+    const subject = ref("");
     const number = ref("");
     const description = ref("");
     const file = ref(null);
     const fileError = ref(null);
+    const isPending = ref(false);
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
       if (file.value) {
-        console.log(number.value, description.value, file.value);
+        isPending.value = true;
+
+        await uploadImage(file.value);
+        await addDoc({
+          subject: subject.value,
+          number: number.value,
+          description: description.value,
+          userId: user.value.uid,
+          userName: user.value.displayName,
+          coverUrl: url.value,
+          filePath: filePath.value,
+          enquireAmount: [],
+          createdAt: timestamp(),
+        });
+        // end
+        isPending.value = false;
+        if (!error.value) {
+          console.log("enquiry added");
+        }
       }
     };
 
@@ -83,12 +132,20 @@ export default {
       }
     };
 
-    return { number, description, handleSubmit, handleChange, fileError };
+    return {
+      subject,
+      number,
+      description,
+      handleSubmit,
+      handleChange,
+      fileError,
+      isPending,
+    };
   },
 };
 </script>
 
-<style>
+<style scoped>
 .form-control {
   width: 50%;
 }
