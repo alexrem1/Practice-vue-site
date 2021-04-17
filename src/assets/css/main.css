@@ -112,7 +112,6 @@ a:hover {
 .dropdown-item:hover {
   color: black;
   background-color: transparent;
-  font-weight: 900;
 }
 
 .navbar-toggler {
