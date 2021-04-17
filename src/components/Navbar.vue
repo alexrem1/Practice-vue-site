@@ -25,15 +25,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
             <li class="nav-item">
-              <a class="nav-link active"
-                ><router-link
-                  :to="{
-                    name: 'Home',
-                  }"
-                >
-                  Home
-                </router-link></a
+              <router-link
+                :to="{
+                  name: 'Home',
+                }"
               >
+                <a class="nav-link"> Home</a>
+              </router-link>
             </li>
 
             <li class="nav-item dropdown">
@@ -84,30 +82,41 @@
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: 'Enquiry',
+                  name: 'CreateEnquiry',
                 }"
               >
-                <a class="nav-link">Make an Enquiry </a>
+                <a class="nav-link">Make an Enquiry</a>
               </router-link>
+            </li>
+            <li class="nav-item">
+              <div v-if="user">
+                <router-link
+                  :to="{
+                    name: 'Account',
+                  }"
+                >
+                  <a class="nav-link">My Account</a>
+                </router-link>
+              </div>
             </li>
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: '',
+                  name: 'Home',
                 }"
               >
-                <a class="nav-link" href="#">Testimonials </a></router-link
+                <a class="nav-link">Testimonials </a></router-link
               >
             </li>
-            <router-link
-              :to="{
-                name: '',
-              }"
-            >
-              <li class="nav-item">
-                <a class="nav-link" href="#">Contact us </a>
-              </li>
-            </router-link>
+            <li class="nav-item">
+              <router-link
+                :to="{
+                  name: 'Home',
+                }"
+              >
+                <a class="nav-link">Contact us </a>
+              </router-link>
+            </li>
           </ul>
 
           <form class="d-flex justify-content-start">
