@@ -70,7 +70,7 @@ a {
 
 a:hover {
   color: white;
-  font-weight: 900;
+  font-style: italic;
 }
 
 .sticky-nav {
@@ -96,7 +96,7 @@ a:hover {
   font-style: italic;
 } */
 
-.navbar-expand-lg .navbar-nav .nav-link.active .router-link-active {
+.router-link-active a {
   color: rgb(53 205 151);
   font-weight: normal;
 }
