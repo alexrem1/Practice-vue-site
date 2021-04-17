@@ -64,13 +64,22 @@ img {
 /* navbar */
 a {
   color: white;
-  text-decoration: none;
   font-weight: normal;
 }
 
 a:hover {
   color: white;
-  font-style: italic;
+  font-weight: lighter;
+}
+
+.router-link-active {
+  color: rgb(53 205 151);
+  font-weight: normal;
+}
+
+.router-link-active:hover {
+  color: rgb(53 205 151);
+  font-weight: lighter;
 }
 
 .sticky-nav {
@@ -95,11 +104,6 @@ a:hover {
   font-weight: bold;
   font-style: italic;
 } */
-
-.router-link-active a {
-  color: rgb(53 205 151);
-  font-weight: normal;
-}
 
 .navbar-expand-lg .navbar-nav .nav-link.active .router-link-active:hover {
   color: black;

@@ -32,6 +32,8 @@
           class="form-control"
           placeholder="Please provide your full phone number"
           required
+          minlength="11"
+          maxlength="11"
           v-model="number"
         />
       </div>
@@ -78,6 +80,7 @@ import useStorage from "../composables/useStorage";
 import useCollection from "../composables/useCollection";
 import getUser from "../composables/getUser";
 import { timestamp } from "../firebase/config";
+import { useRouter } from "vue-router";
 
 export default {
   setup() {
@@ -91,6 +94,7 @@ export default {
     const file = ref(null);
     const fileError = ref(null);
     const isPending = ref(false);
+    const router = useRouter();
 
     const handleSubmit = async () => {
       if (file.value) {
@@ -112,6 +116,7 @@ export default {
         isPending.value = false;
         if (!error.value) {
           console.log("enquiry added");
+          router.push({ name: "Account" });
         }
       }
     };

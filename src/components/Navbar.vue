@@ -29,8 +29,9 @@
                 :to="{
                   name: 'Home',
                 }"
+                class="nav-link"
               >
-                <a class="nav-link"> Home</a>
+                Home
               </router-link>
             </li>
 
@@ -51,9 +52,8 @@
                     :to="{
                       name: 'Home',
                     }"
-                    ><a class="dropdown-item" href="#"
-                      >Pet Sitting</a
-                    ></router-link
+                    class="dropdown-item"
+                    >Pet Sitting</router-link
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
@@ -62,7 +62,8 @@
                     :to="{
                       name: 'Home',
                     }"
-                    ><a class="dropdown-item">Pet walking</a></router-link
+                    class="dropdown-item"
+                    >Pet walking</router-link
                   >
                 </li>
                 <li><hr class="dropdown-divider" /></li>
@@ -71,10 +72,8 @@
                     :to="{
                       name: 'Home',
                     }"
-                  >
-                    <a class="dropdown-item" href="#"
-                      >Pet Grooming</a
-                    ></router-link
+                    class="dropdown-item"
+                    >Pet Grooming</router-link
                   >
                 </li>
               </ul>
@@ -84,18 +83,21 @@
                 :to="{
                   name: 'CreateEnquiry',
                 }"
+                class="nav-link"
               >
-                <a class="nav-link">Make an Enquiry</a>
+                Make an Enquiry
               </router-link>
             </li>
+            <!-- make a dropdown: their details eg another form inside and activity for listview -->
             <li class="nav-item">
               <div v-if="user">
                 <router-link
                   :to="{
                     name: 'Account',
                   }"
+                  class="nav-link"
                 >
-                  <a class="nav-link">My Account</a>
+                  My Account
                 </router-link>
               </div>
             </li>
@@ -104,8 +106,9 @@
                 :to="{
                   name: 'Home',
                 }"
+                class="nav-link"
               >
-                <a class="nav-link">Testimonials </a></router-link
+                Testimonials</router-link
               >
             </li>
             <li class="nav-item">
@@ -113,8 +116,9 @@
                 :to="{
                   name: 'Home',
                 }"
+                class="nav-link"
               >
-                <a class="nav-link">Contact us </a>
+                Contact us
               </router-link>
             </li>
           </ul>
