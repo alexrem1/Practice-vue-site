@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/auth/Login.vue";
 import Signup from "../views/auth/Signup.vue";
-import Enquiry from "../views/Enquiry.vue";
+import CreateEnquiry from "../views/CreateEnquiry.vue";
+import Account from "../views/Account/Account.vue";
 
 const routes = [
   {
@@ -21,9 +22,14 @@ const routes = [
     component: Signup,
   },
   {
-    path: "/enquiry",
-    name: "Enquiry",
-    component: Enquiry,
+    path: "/enquiry/create",
+    name: "CreateEnquiry",
+    component: CreateEnquiry,
+  },
+  {
+    path: "/account",
+    name: "Account",
+    component: Account,
   },
 ];
 
