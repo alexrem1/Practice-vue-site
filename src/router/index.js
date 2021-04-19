@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import Login from "../views/auth/Login.vue";
 import Signup from "../views/auth/Signup.vue";
 import CreateEnquiry from "../views/CreateEnquiry.vue";
+import Account from "../views/Account/Account.vue";
 import Activity from "../views/Account/Activity.vue";
 import Details from "../views/Account/Details.vue";
 import EnquiryDetails from "../views/EnquiryDetails.vue";
@@ -46,6 +47,12 @@ const routes = [
     component: EnquiryDetails,
     beforeEnter: requireAuth,
     props: true,
+  },
+  {
+    path: "/account",
+    name: "Account",
+    component: Account,
+    beforeEnter: requireAuth,
   },
   {
     path: "/account/activity",

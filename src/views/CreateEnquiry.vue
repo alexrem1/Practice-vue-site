@@ -101,7 +101,7 @@ export default {
         isPending.value = true;
 
         await uploadImage(file.value);
-        await addDoc({
+        const res = await addDoc({
           subject: subject.value,
           number: number.value,
           description: description.value,
@@ -116,7 +116,7 @@ export default {
         isPending.value = false;
         if (!error.value) {
           console.log("enquiry added");
-          router.push({ name: "Account" });
+          router.push({ name: "EnquiryDetails", params: { id: res.id } });
         }
       }
     };

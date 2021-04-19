@@ -14,8 +14,10 @@ const useCollection = (collection) => {
     error.value = null;
     isPending.value = true;
     try {
-      await projectFirestore.collection(collection).add(doc); // could hard code eg "messages" but instead pass in collection. Everytime we use this compasable function we can pass in a different collection
+      const res = await projectFirestore.collection(collection).add(doc); // could hard code eg "messages" but instead pass in collection. Everytime we use this compasable function we can pass in a different collection
       isPending.value = false;
+
+      return res;
     } catch (err) {
       console.log(err.message);
       error.value = "could not send the enquiry";

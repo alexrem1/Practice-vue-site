@@ -89,40 +89,18 @@
               </router-link>
             </li>
             <!-- make a dropdown: their details eg another form inside and activity for listview -->
-            <div v-if="user">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
+            <li class="nav-item">
+              <div v-if="user">
+                <router-link
+                  :to="{
+                    name: 'Account',
+                  }"
+                  class="nav-link"
                 >
                   My Account
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li>
-                    <router-link
-                      :to="{
-                        name: 'Activity',
-                      }"
-                      class="dropdown-item"
-                      >Activity</router-link
-                    >
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <router-link
-                      :to="{
-                        name: 'Details',
-                      }"
-                      class="dropdown-item"
-                      >Details</router-link
-                    >
-                  </li>
-                </ul>
-              </li>
-            </div>
+                </router-link>
+              </div>
+            </li>
             <li class="nav-item">
               <router-link
                 :to="{
