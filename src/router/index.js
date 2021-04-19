@@ -3,7 +3,9 @@ import Home from "../views/Home.vue";
 import Login from "../views/auth/Login.vue";
 import Signup from "../views/auth/Signup.vue";
 import CreateEnquiry from "../views/CreateEnquiry.vue";
-import Account from "../views/Account/Account.vue";
+import Activity from "../views/Account/Activity.vue";
+import Details from "../views/Account/Details.vue";
+import EnquiryDetails from "../views/EnquiryDetails.vue";
 
 // route guard
 import { projectAuth } from "../firebase/config";
@@ -39,9 +41,22 @@ const routes = [
     component: CreateEnquiry,
   },
   {
-    path: "/account",
-    name: "Account",
-    component: Account,
+    path: "/enquiry/:id",
+    name: "EnquiryDetails",
+    component: EnquiryDetails,
+    beforeEnter: requireAuth,
+    props: true,
+  },
+  {
+    path: "/account/activity",
+    name: "Activity",
+    component: Activity,
+    beforeEnter: requireAuth,
+  },
+  {
+    path: "/account/details",
+    name: "Details",
+    component: Details,
     beforeEnter: requireAuth,
   },
 ];

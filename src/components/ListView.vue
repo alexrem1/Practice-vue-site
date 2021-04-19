@@ -1,18 +1,20 @@
 <template>
   <div v-for="enquiry in enquiries" :key="enquiry.id">
-    <div class="single">
-      <div class="thumbnail">
-        <img :src="enquiry.coverUrl" alt="" />
+    <router-link :to="{ name: 'EnquiryDetails', params: { id: enquiry.id } }">
+      <div class="single">
+        <div class="thumbnail">
+          <img :src="enquiry.coverUrl" alt="" />
+        </div>
+        <div class="info">
+          <h3>{{ enquiry.description }}</h3>
+          <p>Created by {{ enquiry.userName }}</p>
+          <!-- replace created by -->
+        </div>
+        <div class="song-number">
+          <p>{{ enquiry.enquireAmount.length }}</p>
+        </div>
       </div>
-      <div class="info">
-        <h3>{{ enquiry.description }}</h3>
-        <p>Created by {{ enquiry.userName }}</p>
-        <!-- replace created by -->
-      </div>
-      <div class="song-number">
-        <p>{{ enquiry.enquireAmount.length }}</p>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 

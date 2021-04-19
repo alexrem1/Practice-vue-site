@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <h1>My account</h1>
+    <div class="text-center">
+      <h1>My activity</h1>
+    </div>
     <div v-if="error" class="error">Could not fetch your enquiries</div>
     <div v-if="documents">
       <ListView :enquiries="documents" />
