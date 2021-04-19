@@ -5,6 +5,18 @@ import Signup from "../views/auth/Signup.vue";
 import CreateEnquiry from "../views/CreateEnquiry.vue";
 import Account from "../views/Account/Account.vue";
 
+// route guard
+import { projectAuth } from "../firebase/config";
+
+const requireAuth = (to, from, next) => {
+  let user = projectAuth.currentUser;
+  if (!user) {
+    next({ name: "Login" });
+  } else {
+    next();
+  }
+};
+
 const routes = [
   {
     path: "/",
@@ -30,6 +42,7 @@ const routes = [
     path: "/account",
     name: "Account",
     component: Account,
+    beforeEnter: requireAuth,
   },
 ];
 
