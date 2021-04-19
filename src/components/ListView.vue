@@ -6,7 +6,7 @@
           <img :src="enquiry.coverUrl" alt="" />
         </div>
         <div class="info">
-          <h3>{{ enquiry.description }}</h3>
+          <h3>{{ enquiry.subject }}</h3>
           <p>Created by {{ enquiry.userName }}</p>
           <!-- replace created by -->
         </div>

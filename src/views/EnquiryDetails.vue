@@ -15,10 +15,12 @@
 </template>
 
 <script>
+import useStorage from "@/composables/useStorage";
 import useDocument from "@/composables/useDocument";
 import getDocument from "../composables/getDocument";
 import getUser from "@/composables/getUser";
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 export default {
   props: ["id"],
@@ -26,10 +28,13 @@ export default {
     const { error, document: enquiry } = getDocument("enquiries", props.id);
     const { user } = getUser();
     const { deleteDoc } = useDocument("enquiries", props.id);
+    const { deleteImage } = useStorage();
+    const router = useRouter();
 
     const handleDelete = async () => {
+      await deleteImage(enquiry.value.filePath);
       await deleteDoc();
-      console.log("doc deleted");
+      router.push({ name: "Activity" });
     };
 
     const ownership = computed(() => {

@@ -65,6 +65,7 @@ img {
 a {
   color: white;
   font-weight: normal;
+  text-decoration: none;
 }
 
 a:hover {
