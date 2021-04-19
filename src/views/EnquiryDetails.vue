@@ -9,12 +9,13 @@
       <p>{{ enquiry.description }}</p>
       <p>Created at {{ enquiry.createdAt }}</p>
       more to come
-      <button v-if="ownership">Delete Enquiry</button>
+      <button v-if="ownership" @click="handleDelete">Delete Enquiry</button>
     </div>
   </div>
 </template>
 
 <script>
+import useDocument from "@/composables/useDocument";
 import getDocument from "../composables/getDocument";
 import getUser from "@/composables/getUser";
 import { computed } from "vue";
@@ -24,6 +25,12 @@ export default {
   setup(props) {
     const { error, document: enquiry } = getDocument("enquiries", props.id);
     const { user } = getUser();
+    const { deleteDoc } = useDocument("enquiries", props.id);
+
+    const handleDelete = async () => {
+      await deleteDoc();
+      console.log("doc deleted");
+    };
 
     const ownership = computed(() => {
       return (
@@ -31,7 +38,7 @@ export default {
       );
     });
 
-    return { error, enquiry, ownership };
+    return { error, enquiry, ownership, handleDelete };
   },
 };
 </script>
