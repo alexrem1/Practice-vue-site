@@ -5,10 +5,10 @@
         <div class="mb-3 mt-5 ">
           <label class="form-label">Username</label>
           <input
-            type="username"
+            type="text"
             class="form-control"
             required
-            v-model="username"
+            v-model="displayName"
           />
           <label class="form-label mt-3">Email address</label>
           <input type="email" class="form-control" required v-model="email" />
@@ -57,18 +57,18 @@ export default {
 
     const email = ref("");
     const password = ref("");
-    const username = ref("");
+    const displayName = ref("");
     const router = useRouter();
 
     const handleSubmit = async () => {
-      const res = await signup(email.value, password.value);
+      const res = await signup(email.value, password.value, displayName.value);
       if (!error.value) {
         console.log("User logged in");
         router.push({ name: "Home" });
       }
     };
 
-    return { email, password, username, handleSubmit, error, isPending };
+    return { email, password, displayName, handleSubmit, error, isPending };
   },
 };
 </script>
