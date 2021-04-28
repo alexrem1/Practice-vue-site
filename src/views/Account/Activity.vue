@@ -3,23 +3,29 @@
     <div class="text-center">
       <h1>My activity</h1>
     </div>
-    <div v-if="error" class="error">Could not fetch your enquiries</div>
-    <div v-if="documents">
-      <ListView :enquiries="documents" />
+    <div v-if="error" class="error">You have no activity...</div>
+    <div v-if="enquiry">
+      <ListView :enquiries="enquiry" />
     </div>
   </div>
 </template>
 
 <script>
 import getCollection from "@/composables/getCollection";
+import getUser from "@/composables/getUser";
 import ListView from "@/components/ListView.vue";
 
 export default {
   components: { ListView },
   setup() {
-    const { error, documents } = getCollection("enquiries");
+    const { user } = getUser();
+    const { error, documents: enquiry } = getCollection("enquiries", [
+      "userId",
+      "==",
+      user.value.uid,
+    ]);
 
-    return { error, documents };
+    return { error, enquiry };
   },
 };
 </script>

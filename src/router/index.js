@@ -61,10 +61,11 @@ const routes = [
     beforeEnter: requireAuth,
   },
   {
-    path: "/account/details",
+    path: "/account-details/:id",
     name: "Details",
     component: Details,
     beforeEnter: requireAuth,
+    props: true,
   },
 ];
 

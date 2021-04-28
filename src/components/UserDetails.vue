@@ -1,7 +1,5 @@
 <template>
   <div class="container">
-    <div class="error" v-if="error">{{ error }}</div>
-
     <div v-for="doc in documents" :key="doc.id">
       <form>
         <div class="row mt-5">
@@ -16,7 +14,6 @@
             <input class="m-1" type="text" :value="doc.firstLine" disabled />
             <input class="m-1" type="text" :value="doc.street" disabled />
             <input class="m-1" type="text" :value="doc.postcode" disabled />
-            <input class="m-1" type="text" :value="doc.phoneNumber" disabled />
           </div>
         </div>
       </form>
@@ -24,8 +21,8 @@
         Update your details
       </button>
 
-      <div class="display-3">
-        You have been a Fuzzies member since: {{ doc.createdAt }}
+      <div class="display-4">
+        You have been a Fuzzies member from {{ doc.createdAt }}
       </div>
 
       <!-- update user details -->
@@ -36,24 +33,16 @@
               <h1>Update your details</h1>
               <div class="col-md-8">
                 <br />
-                <input class="m-1" type="text" v-model="firstName" required />
-                <input class="m-1" type="text" v-model="lastName" required />
+                <input class="m-1" type="text" v-model="firstName" />
+                <input class="m-1" type="text" v-model="lastName" />
                 <br />
-                <input class="m-1" type="text" v-model="firstLine" required />
-                <input class="m-1" type="text" v-model="street" required />
-                <input class="m-1" type="text" v-model="postcode" required />
-                <input
-                  class="m-1"
-                  type="number"
-                  v-model="phoneNumber"
-                  required
-                />
+                <input class="m-1" type="text" v-model="firstLine" />
+                <input class="m-1" type="text" v-model="street" />
+                <input class="m-1" type="text" v-model="postcode" />
               </div>
               <div class="col-6 col-md-4">
                 <div v-if="!isPending">
-                  <button class="btn">
-                    Submit
-                  </button>
+                  <button class="btn">Submit</button>
                 </div>
                 <div v-if="isPending">
                   <button class="btn">Updating...</button>
@@ -74,10 +63,11 @@ import useDocument from "@/composables/useDocument";
 import { ref } from "vue";
 
 export default {
-  props: ["id"],
+  component: { UpdateUserDetails },
+  props: ["userDetailData", "id"],
   setup(props) {
     const { user } = getUser();
-    const { error, documents } = getCollection("userDetails", [
+    const { documents } = getCollection("userDetails", [
       "userId",
       "==",
       user.value.uid,
@@ -90,7 +80,6 @@ export default {
     const firstLine = ref("");
     const street = ref("");
     const postcode = ref("");
-    const phoneNumber = ref("");
     const { updateDoc } = useDocument("userDetails", props.id);
 
     const handleUpdate = async () => {
@@ -100,15 +89,11 @@ export default {
         firstLine: firstLine.value,
         street: street.value,
         postcode: postcode.value,
-        phoneNumber: phoneNumber.value,
       });
-      showUpdate.value = false;
-
       //   $refs.updateSuccessful.classList.add("active");
     };
 
     return {
-      error,
       documents,
       user,
       showUpdate,
@@ -117,7 +102,6 @@ export default {
       firstLine,
       street,
       postcode,
-      phoneNumber,
       handleUpdate,
       isPending,
     };
