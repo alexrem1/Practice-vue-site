@@ -76,10 +76,10 @@
 
 <script>
 import { ref } from "vue";
-import useStorage from "../composables/useStorage";
-import useCollection from "../composables/useCollection";
-import getUser from "../composables/getUser";
-import { timestamp } from "../firebase/config";
+import useStorage from "@/composables/useStorage";
+import useCollection from "@/composables/useCollection";
+import getUser from "@/composables/getUser";
+import { timestamp } from "@/firebase/config";
 import { useRouter } from "vue-router";
 
 export default {

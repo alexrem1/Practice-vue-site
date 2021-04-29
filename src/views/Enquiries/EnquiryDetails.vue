@@ -17,7 +17,7 @@
 <script>
 import useStorage from "@/composables/useStorage";
 import useDocument from "@/composables/useDocument";
-import getDocument from "../composables/getDocument";
+import getDocument from "@/composables/getDocument";
 import getUser from "@/composables/getUser";
 import { computed } from "vue";
 import { useRouter } from "vue-router";

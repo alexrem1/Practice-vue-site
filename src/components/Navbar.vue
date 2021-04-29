@@ -162,7 +162,7 @@
 <script>
 import useLogout from "../composables/useLogout";
 import { useRouter } from "vue-router";
-import getUser from "../composables/getUser";
+import getUser from "@/composables/getUser";
 
 export default {
   setup() {
