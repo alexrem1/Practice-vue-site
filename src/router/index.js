@@ -40,6 +40,7 @@ const routes = [
     path: "/enquiry/create",
     name: "CreateEnquiry",
     component: CreateEnquiry,
+    beforeEnter: requireAuth,
   },
   {
     path: "/enquiry/:id",

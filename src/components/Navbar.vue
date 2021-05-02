@@ -79,14 +79,16 @@
               </ul>
             </li>
             <li class="nav-item">
-              <router-link
-                :to="{
-                  name: 'CreateEnquiry',
-                }"
-                class="nav-link"
-              >
-                Make an Enquiry
-              </router-link>
+              <div v-if="user">
+                <router-link
+                  :to="{
+                    name: 'CreateEnquiry',
+                  }"
+                  class="nav-link"
+                >
+                  Make an Enquiry
+                </router-link>
+              </div>
             </li>
             <!-- make a dropdown: their details eg another form inside and activity for listview -->
             <li class="nav-item">
