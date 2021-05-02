@@ -36,23 +36,54 @@
               <h1>Update your details</h1>
               <div class="col-md-8">
                 <br />
-                <input class="m-1" type="text" v-model="firstName" required />
-                <input class="m-1" type="text" v-model="lastName" required />
+                <input
+                  class="m-1"
+                  type="text"
+                  v-model="firstName"
+                  required
+                  placeholder="First Name"
+                />
+                <input
+                  class="m-1"
+                  type="text"
+                  v-model="lastName"
+                  required
+                  placeholder="Last Name"
+                />
                 <br />
-                <input class="m-1" type="text" v-model="firstLine" required />
-                <input class="m-1" type="text" v-model="street" required />
-                <input class="m-1" type="text" v-model="postcode" required />
+                <input
+                  class="m-1"
+                  type="text"
+                  v-model="firstLine"
+                  required
+                  placeholder="House no."
+                />
+                <input
+                  class="m-1"
+                  type="text"
+                  v-model="street"
+                  required
+                  placeholder="Street Name"
+                />
+                <input
+                  class="m-1"
+                  type="text"
+                  v-model="postcode"
+                  required
+                  placeholder="Postcode"
+                />
                 <input
                   class="m-1"
                   type="number"
                   v-model="phoneNumber"
                   required
+                  placeholder="Phone Number"
                 />
               </div>
               <div class="col-6 col-md-4">
                 <div v-if="!isPending">
                   <button class="btn">
-                    Submit
+                    Update your details
                   </button>
                 </div>
                 <div v-if="isPending">
@@ -103,8 +134,6 @@ export default {
         phoneNumber: phoneNumber.value,
       });
       showUpdate.value = false;
-
-      //   $refs.updateSuccessful.classList.add("active");
     };
 
     return {
