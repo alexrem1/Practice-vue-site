@@ -7,6 +7,8 @@ import Account from "../views/Account/Account.vue";
 import Activity from "../views/Account/Activity.vue";
 import Details from "../views/Account/Details.vue";
 import EnquiryDetails from "../views/Enquiries/EnquiryDetails.vue";
+import ChatSupport from "../views/Support/ChatSupport.vue";
+import Contact from "../views/Contact.vue";
 
 // route guard
 import { projectAuth } from "../firebase/config";
@@ -20,21 +22,49 @@ const requireAuth = (to, from, next) => {
   }
 };
 
+const requireNoAuth = (to, from, next) => {
+  let user = projectAuth.currentUser;
+  if (user) {
+    next();
+  } else {
+    next();
+  }
+};
+
+const support = (to, from, next) => {
+  let user = projectAuth.currentUser;
+
+  if (user.displayName == `Support`) {
+    next({ name: "ChatSupport" });
+  } else if (user.displayName != `Support`) {
+    next({ name: "Login" });
+  }
+};
+
 const routes = [
   {
     path: "/",
     name: "Home",
     component: Home,
+    beforeEnter: requireNoAuth,
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
+    beforeEnter: requireNoAuth,
   },
   {
     path: "/signup",
     name: "Signup",
     component: Signup,
+    beforeEnter: requireNoAuth,
+  },
+  {
+    path: "/contact-us",
+    name: "Contact",
+    component: Contact,
+    beforeEnter: requireNoAuth,
   },
   {
     path: "/enquiry/create",
@@ -62,9 +92,16 @@ const routes = [
     beforeEnter: requireAuth,
   },
   {
-    path: "/account-details/:id",
+    path: "/account/details/:id",
     name: "Details",
     component: Details,
+    beforeEnter: requireAuth,
+    props: true,
+  },
+  {
+    path: "/chat-support",
+    name: "ChatSupport",
+    component: ChatSupport,
     beforeEnter: requireAuth,
     props: true,
   },
