@@ -9,18 +9,18 @@
       <p>{{ enquiry.description }}</p>
       <p>Created at {{ enquiry.createdAt }}</p>
       more to come
-      <button v-if="ownership" @click="handleDelete">Delete Enquiry</button>
+      <br />
+      <button v-if="ownership" @click="handleDelete" class="btn">
+        Delete Enquiry
+      </button>
+
+      <div v-if="support" class="my-5">
+        <button class="btn" @click="toggleCompleted">
+          {{ completed ? "Enquiry complete" : "Enquiry incomplete" }}
+        </button>
+      </div>
+      <ChatWindow />
     </div>
-  </div>
-  <div class="container">
-    <ChatWindow />
-    <form>
-      <textarea
-        placeholder="Type a message and hit enter to send"
-        v-model="message"
-        @keypress.enter.prevent="handleSubmit"
-      ></textarea>
-    </form>
   </div>
 </template>
 
@@ -29,11 +29,9 @@ import useStorage from "@/composables/useStorage";
 import useDocument from "@/composables/useDocument";
 import getDocument from "@/composables/getDocument";
 import getUser from "@/composables/getUser";
-import useCollection from "@/composables/useCollection";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
-import { timestamp } from "../../firebase/config";
-import ChatWindow from "../../components/ChatWindow.vue";
+import ChatWindow from "@/components/Support/ChatWindow.vue";
 
 export default {
   components: { ChatWindow },
@@ -43,9 +41,15 @@ export default {
     const { user } = getUser();
     const { deleteDoc } = useDocument("enquiries", props.id);
     const { deleteImage } = useStorage();
-    const { addDoc } = useCollection("support-chat");
     const router = useRouter();
-    const message = ref("");
+    const completed = ref(false);
+
+    const toggleCompleted = () => {
+      completed.value = !completed.value;
+      const delay = setTimeout(() => {
+        router.push({ name: "ChatSupport" });
+      }, 3000);
+    };
 
     const handleDelete = async () => {
       await deleteImage(enquiry.value.filePath);
@@ -55,32 +59,24 @@ export default {
 
     const ownership = computed(() => {
       return (
-        enquiry.value && user.value && user.value.uid == enquiry.value.userId
+        (enquiry.value &&
+          user.value &&
+          user.value.uid == enquiry.value.userId) ||
+        user.value.displayName == "Support"
       );
     });
-
-    const handleSubmit = async () => {
-      const chat = {
-        message: message.value,
-        user: user.value.displayName,
-        createdAt: timestamp(),
-        userId: user.value.uid,
-      };
-      await addDoc(chat);
-      if (!error.value) {
-        message.value = "";
-      } else {
-        error.value = "You do not own this enquiry.";
-      }
-    };
+    const support = computed(() => {
+      return user.value.displayName == "Support";
+    });
 
     return {
       error,
       enquiry,
       ownership,
       handleDelete,
-      handleSubmit,
-      message,
+      support,
+      toggleCompleted,
+      completed,
     };
   },
 };
@@ -89,19 +85,5 @@ export default {
 <style scoped>
 .container {
   min-height: 85vh;
-}
-form {
-  margin: 10px;
-}
-textarea {
-  width: 50%;
-  max-width: 50%;
-  margin-bottom: 6px;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 0;
-  border-radius: 20px;
-  font-family: inherit;
-  outline: none;
 }
 </style>
