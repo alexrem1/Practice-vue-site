@@ -2,7 +2,7 @@
   <div class="container">
     <div class="error" v-if="error">{{ error }}</div>
 
-    <div v-for="doc in documents" :key="doc.id">
+    <div v-for="doc in formattedDocuments" :key="doc.id">
       <form>
         <div class="row mt-5">
           <h1>Your details</h1>
@@ -23,9 +23,10 @@
       <button v-if="!showUpdate" @click="showUpdate = true" class="btn mt-3">
         Update your details
       </button>
+      <div ref="updateSuccessful"></div>
 
       <div class="display-3">
-        You have been a Fuzzies member since: {{ doc.createdAt }}
+        You have been a Fuzzies member for {{ doc.createdAt }}
       </div>
 
       <!-- update user details -->
@@ -102,7 +103,8 @@
 import getUser from "@/composables/getUser";
 import getCollection from "@/composables/getCollection";
 import useDocument from "@/composables/useDocument";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 export default {
   props: ["id"],
@@ -136,6 +138,16 @@ export default {
       showUpdate.value = false;
     };
 
+    // computed documents to a more appealing structure
+    const formattedDocuments = computed(() => {
+      if (documents.value) {
+        return documents.value.map((doc) => {
+          let time = formatDistanceToNow(doc.createdAt.toDate());
+          return { ...doc, createdAt: time };
+        });
+      }
+    });
+
     return {
       error,
       documents,
@@ -149,6 +161,7 @@ export default {
       phoneNumber,
       handleUpdate,
       isPending,
+      formattedDocuments,
     };
   },
 };
