@@ -6,7 +6,7 @@
           :to="{
             name: 'Home',
           }"
-          ><img src="../assets/images/Fuzzies.png" alt="Home"
+          ><img src="@/assets/images/Fuzzies.png" alt="Home"
         /></router-link>
         <!-- <span class="navbar-brand">Fuzzies</span> -->
         <button
@@ -106,17 +106,7 @@
             <li class="nav-item">
               <router-link
                 :to="{
-                  name: 'Home',
-                }"
-                class="nav-link"
-              >
-                Testimonials</router-link
-              >
-            </li>
-            <li class="nav-item">
-              <router-link
-                :to="{
-                  name: 'Home',
+                  name: 'Contact',
                 }"
                 class="nav-link"
               >

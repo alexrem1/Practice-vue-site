@@ -7,11 +7,12 @@
           <div class="height">
             <h1 class="heading ">
               We're the people you didn't know you needed!
+              <br />
               <router-link :to="{ name: 'Signup' }">
                 <button class="btn">Sign up</button>
               </router-link>
               with
-              <br />
+
               <span>Fuzzies today</span>
             </h1>
           </div>
