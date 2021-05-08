@@ -10,15 +10,9 @@
       <p>Created at {{ enquiry.createdAt }}</p>
       more to come
       <br />
-      <button v-if="ownership" @click="handleDelete" class="btn">
+      <button v-if="ownershipSupport" @click="handleDelete" class="btn">
         Delete Enquiry
       </button>
-
-      <div v-if="support" class="my-5">
-        <button class="btn" @click="toggleCompleted">
-          {{ completed ? "Enquiry complete" : "Enquiry incomplete" }}
-        </button>
-      </div>
       <ChatWindow />
     </div>
   </div>
@@ -42,7 +36,6 @@ export default {
     const { deleteDoc } = useDocument("enquiries", props.id);
     const { deleteImage } = useStorage();
     const router = useRouter();
-    const completed = ref(false);
 
     const toggleCompleted = () => {
       completed.value = !completed.value;
@@ -57,7 +50,7 @@ export default {
       router.push({ name: "Activity" });
     };
 
-    const ownership = computed(() => {
+    const ownershipSupport = computed(() => {
       return (
         (enquiry.value &&
           user.value &&
@@ -65,16 +58,12 @@ export default {
         user.value.displayName == "Support"
       );
     });
-    const support = computed(() => {
-      return user.value.displayName == "Support";
-    });
 
     return {
       error,
       enquiry,
-      ownership,
+      ownershipSupport,
       handleDelete,
-      support,
       toggleCompleted,
       completed,
     };

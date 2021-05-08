@@ -3,17 +3,16 @@
     <div v-if="error">{{ error }}</div>
     <!-- show chat -->
     <div v-show="showChat">
-      <div v-if="documents" class="messages">
+      <div v-if="documents" class="messages" ref="messages">
         <div
           v-for="doc in formattedDocuments"
           :key="doc.id"
           :class="
             doc.user == user.displayName ? `message current-user` : `message`
           "
-          ref="messages"
         >
           <div class="message-inner">
-            <span class="created-at">{{ doc.createdAt }}</span>
+            <span class="created-at">{{ doc.createdAt }} ago</span>
             <span class="user">{{ doc.user }}:</span>
             <span class="content">{{ doc.message }}</span>
           </div>
@@ -76,11 +75,11 @@ export default {
     };
 
     // auto-scroll to the bottom
-    // const messages = ref(null);
+    const messages = ref(null);
 
-    // onUpdated(() => {
-    //   messages.value.scrollTop = messages.value.scrollHeight;
-    // });
+    onUpdated(() => {
+      messages.value.scrollTop = messages.value.scrollHeight;
+    });
 
     // bring up the support chat
     const toggleChat = () => {
@@ -95,6 +94,7 @@ export default {
       documents,
       formattedDocuments,
       message,
+      messages,
       toggleChat,
     };
   },
@@ -105,6 +105,16 @@ export default {
 .messages {
   max-height: 400px;
   overflow: auto;
+}
+
+.messages::-webkit-scrollbar {
+  width: 8px;
+}
+.messages::-webkit-scrollbar-track {
+  background: #ddd;
+}
+.messages::-webkit-scrollbar-thumb {
+  background: #aaa;
 }
 
 .chat-box {
@@ -151,10 +161,15 @@ export default {
   max-width: 75%;
   color: #ea526f;
 }
+.chat-box .messages .current-user .message-inner .created-at {
+  margin-right: 3rem;
+}
+
 .chat-box .messages .current-user .message-inner .content {
   color: #fff;
   font-weight: 600;
   background-color: #ea526f;
+  margin-right: 2rem;
 }
 
 form {
