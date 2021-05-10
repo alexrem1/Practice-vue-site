@@ -2,18 +2,26 @@
   <div v-if="error" class="error">{{ error }}</div>
   <div v-if="enquiry">
     <div class="container">
-      <img :src="enquiry.coverUrl" />
-
-      <h2>{{ enquiry.subject }}</h2>
-      <p>Created by: {{ enquiry.userName }}</p>
-      <p>{{ enquiry.description }}</p>
-      <p>Created at {{ enquiry.createdAt }}</p>
-      more to come
-      <br />
-      <button v-if="ownershipSupport" @click="handleDelete" class="btn">
-        Delete Enquiry
-      </button>
-      <ChatWindow />
+      <div class="card mb-5 mt-5">
+        <div class="card-header text-center p-3">
+          {{ enquiry.subject }}
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title">
+            <img class="img-fluid" :src="enquiry.coverUrl" />
+          </h5>
+          <p class="card-text p-3">
+            {{ enquiry.description }}
+          </p>
+          <p class="card-text p-3">Created by: {{ enquiry.userName }}</p>
+        </div>
+        <div class="card-footer text-muted text-center">
+          <button v-if="ownershipSupport" @click="handleDelete" class="btn">
+            Delete Enquiry
+          </button>
+        </div>
+        <ChatWindow />
+      </div>
     </div>
   </div>
 </template>
@@ -65,7 +73,6 @@ export default {
       ownershipSupport,
       handleDelete,
       toggleCompleted,
-      completed,
     };
   },
 };
@@ -73,6 +80,10 @@ export default {
 
 <style scoped>
 .container {
-  min-height: 85vh;
+  min-height: 80vh;
+}
+.card {
+  color: rgb(53 205 151 / 61%);
+  font-weight: bolder;
 }
 </style>

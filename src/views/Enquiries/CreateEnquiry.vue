@@ -19,22 +19,7 @@
           placeholder="What is the nature of your enquiry?"
           required
           v-model="subject"
-        />
-      </div>
-
-      <!-- phone number -->
-      <div class="mb-3 d-flex justify-content-center">
-        <label>Phone number</label>
-      </div>
-      <div class="mb-3 d-flex justify-content-center">
-        <input
-          type="number"
-          class="form-control"
-          placeholder="Please provide your full phone number"
-          required
-          minlength="11"
-          maxlength="11"
-          v-model="number"
+          ref="subjectFocus"
         />
       </div>
 
@@ -75,7 +60,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import useStorage from "@/composables/useStorage";
 import useCollection from "@/composables/useCollection";
 import getUser from "@/composables/getUser";
@@ -89,12 +74,16 @@ export default {
     const { user } = getUser();
 
     const subject = ref("");
-    const number = ref("");
     const description = ref("");
     const file = ref(null);
     const fileError = ref(null);
     const isPending = ref(false);
     const router = useRouter();
+    const subjectFocus = ref(null);
+
+    onMounted(() => {
+      subjectFocus.value.focus();
+    });
 
     const handleSubmit = async () => {
       if (file.value) {
@@ -103,7 +92,6 @@ export default {
         await uploadImage(file.value);
         const res = await addDoc({
           subject: subject.value,
-          number: number.value,
           description: description.value,
           userId: user.value.uid,
           userName: user.value.displayName,
@@ -139,12 +127,12 @@ export default {
 
     return {
       subject,
-      number,
       description,
       handleSubmit,
       handleChange,
       fileError,
       isPending,
+      subjectFocus,
     };
   },
 };
