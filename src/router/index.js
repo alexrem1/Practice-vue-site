@@ -8,6 +8,7 @@ import Activity from "../views/Account/Activity.vue";
 import Details from "../views/Account/Details.vue";
 import EnquiryDetails from "../views/Enquiries/EnquiryDetails.vue";
 import ChatSupport from "../views/Support/ChatSupport.vue";
+import Services from "../views/Services.vue";
 import Contact from "../views/Contact.vue";
 
 // route guard
@@ -35,9 +36,11 @@ const support = (to, from, next) => {
   let user = projectAuth.currentUser;
 
   if (user.displayName == `Support`) {
-    next({ name: "ChatSupport" });
+    next();
   } else if (user.displayName != `Support`) {
-    next({ name: "Login" });
+    next({ name: "Home" });
+  } else if (!user.displayName) {
+    next({ name: "Home" });
   }
 };
 
@@ -58,6 +61,12 @@ const routes = [
     path: "/signup",
     name: "Signup",
     component: Signup,
+    beforeEnter: requireNoAuth,
+  },
+  {
+    path: "/services",
+    name: "Services",
+    component: Services,
     beforeEnter: requireNoAuth,
   },
   {
@@ -102,8 +111,7 @@ const routes = [
     path: "/chat-support",
     name: "ChatSupport",
     component: ChatSupport,
-    beforeEnter: requireAuth,
-    props: true,
+    beforeEnter: support,
   },
 ];
 
