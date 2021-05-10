@@ -22,7 +22,12 @@
           <span></span>
           <span></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarSupportedContent"
+          ref="collapse"
+          @click="handleCollapse"
+        >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
             <li class="nav-item">
               <router-link
@@ -36,9 +41,10 @@
             </li>
           </ul>
 
-          <form class="d-flex justify-content-start">
+          <form>
             <div v-if="user.displayName == `Support`">
-              <button @click.prevent="handleClick" class="btn">
+              <span>You're logged in as: {{ user.displayName }}</span>
+              <button @click.prevent="handleClick" class="btn m-3">
                 Log out
               </button>
             </div>
@@ -64,12 +70,14 @@
 import useLogout from "../../composables/useLogout";
 import { useRouter } from "vue-router";
 import getUser from "@/composables/getUser";
+import { onMounted, ref } from "vue";
 
 export default {
   setup() {
     const { error, logout } = useLogout();
     const router = useRouter();
     const { user } = getUser();
+    const collapse = ref(null);
 
     const handleClick = async () => {
       await logout();
@@ -79,7 +87,14 @@ export default {
       }
     };
 
-    return { error, handleClick, user };
+    const handleCollapse = onMounted(() => {
+      console.log(collapse.value.classList);
+      if (collapse.value.classList.contains("show")) {
+        collapse.value.classList.remove("show");
+      }
+    });
+
+    return { error, handleClick, user, handleCollapse, collapse };
   },
 };
 </script>

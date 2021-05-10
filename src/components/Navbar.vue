@@ -8,7 +8,6 @@
           }"
           ><img src="@/assets/images/Fuzzies.png" alt="Home"
         /></router-link>
-        <!-- <span class="navbar-brand">Fuzzies</span> -->
         <button
           class="navbar-toggler"
           type="button"
@@ -22,7 +21,12 @@
           <span></span>
           <span></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarSupportedContent"
+          ref="collapse"
+          @click="handleCollapse"
+        >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
             <li class="nav-item">
               <router-link
@@ -34,50 +38,17 @@
                 Home
               </router-link>
             </li>
-
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+            <li class="nav-item">
+              <router-link
+                :to="{
+                  name: 'Services',
+                }"
+                class="nav-link"
               >
                 Services
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li>
-                  <router-link
-                    :to="{
-                      name: 'Home',
-                    }"
-                    class="dropdown-item"
-                    >Pet Sitting</router-link
-                  >
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <router-link
-                    :to="{
-                      name: 'Home',
-                    }"
-                    class="dropdown-item"
-                    >Pet walking</router-link
-                  >
-                </li>
-                <li><hr class="dropdown-divider" /></li>
-                <li>
-                  <router-link
-                    :to="{
-                      name: 'Home',
-                    }"
-                    class="dropdown-item"
-                    >Pet Grooming</router-link
-                  >
-                </li>
-              </ul>
+              </router-link>
             </li>
+
             <li class="nav-item">
               <div v-if="user">
                 <router-link
@@ -90,7 +61,6 @@
                 </router-link>
               </div>
             </li>
-            <!-- make a dropdown: their details eg another form inside and activity for listview -->
             <li class="nav-item">
               <div v-if="user">
                 <router-link
@@ -115,7 +85,7 @@
             </li>
           </ul>
 
-          <form class="d-flex justify-content-start">
+          <form class="">
             <div v-if="user">
               <button @click.prevent="handleClick" class="btn">
                 Log out
@@ -155,12 +125,14 @@
 import useLogout from "../composables/useLogout";
 import { useRouter } from "vue-router";
 import getUser from "@/composables/getUser";
+import { onMounted, ref } from "vue";
 
 export default {
   setup() {
     const { error, logout } = useLogout();
     const router = useRouter();
     const { user } = getUser();
+    const collapse = ref(null);
 
     const handleClick = async () => {
       await logout();
@@ -170,7 +142,13 @@ export default {
       }
     };
 
-    return { error, handleClick, user };
+    const handleCollapse = onMounted(() => {
+      if (collapse.value.classList.contains("show")) {
+        collapse.value.classList.remove("show");
+      }
+    });
+
+    return { error, handleClick, user, handleCollapse, collapse };
   },
 };
 </script>
