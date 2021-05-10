@@ -23,13 +23,18 @@
           placeholder="Type a message and hit enter to send"
           v-model="message"
           @keypress.enter.prevent="handleSubmit"
-        ></textarea>
+          ref="textarea"
+        />
       </form>
     </div>
   </div>
-  <button class="btn mb-5" @click="toggleChat">
-    {{ showChat ? "Close support chat" : "Open support chat" }}
-  </button>
+  <div class="text-center">
+    <div v-if="errorAddDoc" class="error mb-3">{{ errorAddDoc }}</div>
+
+    <button class="btn mb-2" @click="toggleChat">
+      {{ showChat ? "Close support chat" : "Open support chat" }}
+    </button>
+  </div>
 </template>
 
 <script>
@@ -44,9 +49,10 @@ export default {
   setup() {
     const { user } = getUser();
     const { error, documents } = getCollection("support-chat");
-    const { addDoc } = useCollection("support-chat");
+    const { error: errorAddDoc, addDoc } = useCollection("support-chat");
     const showChat = ref(false);
     const message = ref("");
+    const textarea = ref(null);
 
     // computed documents to a more appealing structure
     const formattedDocuments = computed(() => {
@@ -66,7 +72,11 @@ export default {
         createdAt: timestamp(),
         userId: user.value.uid,
       };
-      await addDoc(chat);
+      if (message.value) {
+        await addDoc(chat);
+      } else {
+        errorAddDoc.value = "Enter a message";
+      }
       if (!error.value) {
         message.value = "";
       } else {
@@ -79,6 +89,7 @@ export default {
 
     onUpdated(() => {
       messages.value.scrollTop = messages.value.scrollHeight;
+      textarea.value.focus();
     });
 
     // bring up the support chat
@@ -96,6 +107,8 @@ export default {
       message,
       messages,
       toggleChat,
+      textarea,
+      errorAddDoc,
     };
   },
 };
@@ -122,7 +135,6 @@ export default {
   background-color: #fff;
   box-shadow: 0px 0px 12px rgba(100, 100, 100, 0.2);
   flex: 1 1 100%;
-  padding: 30px;
   margin: 2rem 0rem 2rem 0rem;
 }
 
@@ -132,6 +144,7 @@ export default {
   color: #999;
   font-size: 12px;
   margin-bottom: 4px;
+  margin-left: 2rem;
 }
 
 .chat-box .messages .message-inner .user {
@@ -159,7 +172,7 @@ export default {
 
 .chat-box .messages .current-user .message-inner .user {
   max-width: 75%;
-  color: #ea526f;
+  color: rgb(53 205 151 / 61%);
 }
 .chat-box .messages .current-user .message-inner .created-at {
   margin-right: 3rem;
@@ -168,7 +181,7 @@ export default {
 .chat-box .messages .current-user .message-inner .content {
   color: #fff;
   font-weight: 600;
-  background-color: #ea526f;
+  background-color: rgb(53 205 151 / 61%);
   margin-right: 2rem;
 }
 
