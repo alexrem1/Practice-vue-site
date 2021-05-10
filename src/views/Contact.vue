@@ -1,63 +1,66 @@
 <template>
-  <div class="container body d-flex justify-content-center">
-    <form @submit.prevent="handleSubmit" class="w-50 my-5">
-      <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="far fa-user"></i>
+  <div class="header-background">
+    <div class="body d-flex justify-content-center">
+      <form @submit.prevent="handleSubmit" class="my-3">
+        <div ref="success" class="d-flex justify-content-center"></div>
+
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="far fa-user"></i>
+            </div>
           </div>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            v-model="name"
+            required
+          />
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Name"
-          v-model="name"
-          required
-        />
-      </div>
-      <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="far fa-paper-plane"></i>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="far fa-paper-plane"></i>
+            </div>
           </div>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Email"
+            v-model="email"
+            required
+          />
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Email"
-          v-model="email"
-          required
-        />
-      </div>
-      <div class="input-group mb-2 mr-sm-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="fas fa-phone-alt"></i>
+        <div class="input-group mb-2 mr-sm-2">
+          <div class="input-group-prepend">
+            <div class="input-group-text">
+              <i class="fas fa-phone-alt"></i>
+            </div>
           </div>
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Phone"
+            v-model="phone"
+            required
+          />
         </div>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Phone"
-          v-model="phone"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <textarea
-          class="form-control"
-          rows="10"
-          placeholder="Your message..."
-          v-model="message"
-          required
-        ></textarea>
-      </div>
-      <div class="d-flex justify-content-center">
-        <button v-if="!isPending" class="btn m-5">Contact us</button>
-        <button v-if="isPending" class="btn m-5">Contacting...</button>
-        <div id="success"></div>
-      </div>
-    </form>
+        <div class="form-group">
+          <textarea
+            class="form-control"
+            rows="10"
+            placeholder="Your message..."
+            v-model="message"
+            required
+          ></textarea>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button v-if="!isPending" class="btn m-5">Contact us</button>
+          <button v-if="isPending" class="btn m-5">Contacting...</button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -65,7 +68,10 @@
 import useCollection from "@/composables/useCollection";
 import { ref } from "vue";
 import { timestamp } from "../firebase/config";
+import ContactToast from "@/components/Toasts/ContactToast";
+
 export default {
+  components: { ContactToast },
   setup() {
     const { error, addDoc } = useCollection("contact-us");
 
@@ -74,6 +80,7 @@ export default {
     const phone = ref("");
     const message = ref("");
     const isPending = ref(false);
+    const success = ref(null);
 
     const handleSubmit = async () => {
       isPending.value = true;
@@ -86,31 +93,48 @@ export default {
       });
       isPending.value = false;
       if (!error.value) {
-        console.log(
-          "Thanks for messaging us, show below the button eventually"
-        );
-        //alert logic here
+        let html = `
+         <h1 class="my-2 success">Thank you for contacting us.<br/>
+        We will get back to you as soon as possible.
+        </h1>
+    `;
+        setTimeout(() => {
+          success.value.innerHTML += html;
+        });
+        name.value = "";
+        email.value = "";
+        phone.value = "";
+        message.value = "";
       }
     };
 
-    return { name, message, email, phone, handleSubmit, error, isPending };
+    return {
+      name,
+      message,
+      email,
+      phone,
+      handleSubmit,
+      error,
+      isPending,
+      success,
+    };
   },
 };
 </script>
 
 <style scoped>
-.container {
-  min-height: 100vh;
-}
 .body {
-  background-color: grey;
-  border-radius: 10%;
-  margin: 5rem;
+  opacity: 75%;
 }
 .input-group-text {
   font-size: 2rem;
 }
-.form {
-  background-color: red;
+.header-background {
+  background-image: linear-gradient(
+      180deg,
+      rgba(50, 58, 69, 0.55),
+      rgba(50, 58, 69, 0.74)
+    ),
+    url(../assets/images/contact.jpg);
 }
 </style>
