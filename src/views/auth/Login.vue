@@ -1,10 +1,16 @@
 <template>
   <div class="container">
-    <div class="d-flex justify-content-center h-100">
-      <form @submit.prevent="handleSubmit" class="padding-login">
+    <div class="d-flex justify-content-center">
+      <form @submit.prevent="handleSubmit">
         <div class="mb-3 mt-5">
           <label class="form-label">Email address</label>
-          <input type="email" class="form-control" required v-model="email" />
+          <input
+            type="email"
+            class="form-control"
+            required
+            v-model="email"
+            ref="emailFocus"
+          />
         </div>
         <div>
           <label class="form-label">Password</label>
@@ -16,15 +22,15 @@
           />
         </div>
 
-        <div class="error" v-if="error">{{ error }}</div>
+        <div class="error mt-2" v-if="error">{{ error }}</div>
         <div class="d-flex justify-content-center">
           <button v-if="!isPending" class="btn mt-5">Log in</button>
         </div>
         <div class="d-flex justify-content-center">
-          <button v-if="isPending" class="btn mb-5 mt-5" disabled>
+          <button v-if="isPending" class="btn mb-3 mt-3" disabled>
             Loading
           </button>
-          <div class="form-text">
+          <div class="form-text mt-3">
             Don't have an account?
             <router-link :to="{ name: 'Signup' }"> Sign up</router-link>
           </div>
@@ -36,7 +42,7 @@
 
 <script>
 import useLogin from "@/composables/useLogin";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import router, { useRouter } from "vue-router";
 
 export default {
@@ -46,6 +52,11 @@ export default {
 
     const email = ref("");
     const password = ref("");
+    const emailFocus = ref(null);
+
+    onMounted(() => {
+      emailFocus.value.focus();
+    });
 
     const handleSubmit = async () => {
       const res = await login(email.value, password.value);
@@ -55,7 +66,7 @@ export default {
       }
     };
 
-    return { email, password, handleSubmit, error, isPending };
+    return { email, password, handleSubmit, error, isPending, emailFocus };
   },
 };
 </script>

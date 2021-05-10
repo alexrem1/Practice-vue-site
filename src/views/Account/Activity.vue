@@ -1,8 +1,5 @@
 <template>
   <div class="container">
-    <div class="text-center">
-      <h1>My activity</h1>
-    </div>
     <div v-if="error" class="error">You have no activity...</div>
     <div v-if="enquiry">
       <ListView :enquiries="enquiry" />

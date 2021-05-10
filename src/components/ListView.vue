@@ -4,29 +4,28 @@
       <router-link :to="{ name: 'EnquiryDetails', params: { id: enquiry.id } }">
         <div class="single">
           <div class="thumbnail">
-            <img :src="enquiry.coverUrl" alt="" />
+            <img class="img-fluid" :src="enquiry.coverUrl" alt="" />
           </div>
           <div class="info">
             <h3>{{ enquiry.subject }}</h3>
             <p>Created by {{ enquiry.userName }}</p>
             <!-- replace created by -->
           </div>
-          <div class="song-number">
-            <p>{{ enquiry.enquireAmount.length }}</p>
-          </div>
         </div>
       </router-link>
     </div>
   </div>
-  <button @click="toggleShowEnquiry" class="m-5 btn">
-    <span>
-      {{
-        showEnquiry
-          ? "Click to hide your enquiries activity"
-          : "Click to show your enquiries activity"
-      }}
-    </span>
-  </button>
+  <div class="d-flex justify-content-center">
+    <button @click="toggleShowEnquiry" class="m-5 btn">
+      <span>
+        {{
+          showEnquiry
+            ? "Click to hide your enquiries activity"
+            : "Click to show your enquiries activity"
+        }}
+      </span>
+    </button>
+  </div>
 </template>
 
 <script>
@@ -74,7 +73,7 @@ img {
   display: block;
 }
 .info {
-  margin: 0 30px;
+  margin-left: 1rem;
 }
 .song-number {
   margin-left: auto;
