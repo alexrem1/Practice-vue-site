@@ -52,7 +52,7 @@
 
       <div class="error mb-2 text-center"></div>
       <div class="d-flex justify-content-center">
-        <button v-if="!isPending" class="btn m-5">Send Enquiry</button>
+        <button v-if="!isPending" class="btn m-5">Create Enquiry</button>
         <button v-if="isPending" class="btn m-5">Saving...</button>
       </div>
     </form>

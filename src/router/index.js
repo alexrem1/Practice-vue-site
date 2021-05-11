@@ -39,8 +39,6 @@ const support = (to, from, next) => {
     next();
   } else if (user.displayName != `Support`) {
     next({ name: "Home" });
-  } else if (!user.displayName) {
-    next({ name: "Home" });
   }
 };
 

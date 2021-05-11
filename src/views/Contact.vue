@@ -1,9 +1,10 @@
 <template>
-  <div class="header-background">
-    <div class="body d-flex justify-content-center">
-      <form @submit.prevent="handleSubmit" class="my-3">
-        <div ref="success" class="d-flex justify-content-center"></div>
+  <div class="header-background ">
+    <h1 class="text-center py-3">Contact form</h1>
+    <div ref="success" class="d-flex justify-content-center"></div>
 
+    <div class="body d-flex justify-content-evenly">
+      <form @submit.prevent="handleSubmit" class="my-3">
         <div class="input-group mb-2 mr-sm-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -101,6 +102,7 @@ export default {
         setTimeout(() => {
           success.value.innerHTML += html;
         });
+        success.value = scrollTo(0, 0);
         name.value = "";
         email.value = "";
         phone.value = "";

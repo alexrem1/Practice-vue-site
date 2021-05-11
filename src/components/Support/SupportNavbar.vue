@@ -88,7 +88,6 @@ export default {
     };
 
     const handleCollapse = onMounted(() => {
-      console.log(collapse.value.classList);
       if (collapse.value.classList.contains("show")) {
         collapse.value.classList.remove("show");
       }

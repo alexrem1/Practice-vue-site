@@ -31,7 +31,7 @@
   <div class="text-center">
     <div v-if="errorAddDoc" class="error mb-3">{{ errorAddDoc }}</div>
 
-    <button class="btn mb-2" @click="toggleChat">
+    <button class="btn mb-5" @click="toggleChat">
       {{ showChat ? "Close support chat" : "Open support chat" }}
     </button>
   </div>
@@ -131,7 +131,6 @@ export default {
 }
 
 .chat-box {
-  border-radius: 24px;
   background-color: #fff;
   box-shadow: 0px 0px 12px rgba(100, 100, 100, 0.2);
   flex: 1 1 100%;

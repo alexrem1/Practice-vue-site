@@ -1,27 +1,37 @@
 <template>
-  <div v-if="error" class="error">{{ error }}</div>
   <div v-if="enquiry">
     <div class="container">
+      <p class="p-3 text-center">
+        This enquiry belongs to: {{ enquiry.userName }}
+      </p>
+      <div v-if="error" class="error">{{ error }}</div>
       <div class="card mb-5 mt-5">
         <div class="card-header text-center p-3">
           {{ enquiry.subject }}
         </div>
         <div class="card-body text-center">
           <h5 class="card-title">
-            <img class="img-fluid" :src="enquiry.coverUrl" />
+            <img
+              class="img-fluid"
+              width="750"
+              height="750"
+              :src="enquiry.coverUrl"
+            />
           </h5>
           <p class="card-text p-3">
             {{ enquiry.description }}
           </p>
-          <p class="card-text p-3">Created by: {{ enquiry.userName }}</p>
         </div>
         <div class="card-footer text-muted text-center">
           <button v-if="ownershipSupport" @click="handleDelete" class="btn">
             Delete Enquiry
           </button>
         </div>
-        <ChatWindow />
       </div>
+      <div class="heading pt-5">
+        <mark>Enter the support chat below for help with your enquiry.</mark>
+      </div>
+      <ChatWindow />
     </div>
   </div>
 </template>
@@ -60,10 +70,7 @@ export default {
 
     const ownershipSupport = computed(() => {
       return (
-        (enquiry.value &&
-          user.value &&
-          user.value.uid == enquiry.value.userId) ||
-        user.value.displayName == "Support"
+        enquiry.value && user.value && user.value.uid == enquiry.value.userId
       );
     });
 
@@ -85,5 +92,6 @@ export default {
 .card {
   color: rgb(53 205 151 / 61%);
   font-weight: bolder;
+  background-color: rgb(232, 235, 229);
 }
 </style>
