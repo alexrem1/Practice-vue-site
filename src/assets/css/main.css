@@ -15,7 +15,17 @@ body {
   color: red;
 }
 .success {
-  color: rgb(53 205 151 / 61%);
+  color: rgb(53 205 151);
+}
+
+.heading {
+  font-size: 2.6rem;
+  font-weight: lighter;
+  line-height: 1.4;
+  text-align: center;
+  color: white;
+  min-height: 100px;
+  margin: 10px;
 }
 
 /* image background */
@@ -47,16 +57,6 @@ body {
   object-fit: fill;
   -o-object-fit: fill;
   -webkit-box-orient: vertical;
-}
-
-.heading {
-  font-size: 2.6rem;
-  font-weight: lighter;
-  line-height: 1.4;
-  text-align: center;
-  color: white;
-  min-height: 100px;
-  margin: 10px;
 }
 
 img {
