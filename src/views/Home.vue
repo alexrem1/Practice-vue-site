@@ -69,7 +69,7 @@
             </div>
           </div>
           <div class="col-12">
-            <div class="flex-grow-1 ms-3 heading">
+            <div class="flex-grow-1 ms-3 display-3">
               <p>
                 " Just, <em>INCREDIBLE...</em> the specialists at Fuzzies
                 provided outstanding grooming and excellent care for my 3 German
@@ -89,6 +89,42 @@
             </figcaption>
           </div>
         </figure>
+      </div>
+
+      <div
+        class="row d-none d-md-block d-lg-none d-xl-none pt-3 pb-5 pt-5 g-4 d-flex justify-content-center"
+      >
+        <div class="col" style="color: black">
+          <div class="card h-100">
+            <img
+              src="../assets/images/sacha.jpg"
+              class="card-img-top img-fluid"
+              alt="..."
+            />
+            <div class="card-body">
+              <h5 class="card-title text-center">
+                <router-link
+                  :to="{
+                    name: 'Services',
+                  }"
+                  ><a>
+                    Dog Walking Services
+                  </a>
+                </router-link>
+              </h5>
+              <p class="card-text">
+                Trusting someone else to look after your faithful friend can be
+                a daunting task, but Fuzzies is here to help! <br />
+                <br />
+                Perhaps you’re seeking a temporary dog walker as you work around
+                other commitments. Or maybe you’re looking for someone to care
+                for your cuddly canine on a long-term basis. Either way, our
+                easy-to-use platform will ensure your requirements are met.
+              </p>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

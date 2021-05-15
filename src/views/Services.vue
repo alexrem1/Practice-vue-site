@@ -12,17 +12,17 @@
           />
           <div class="card-body">
             <h5 class="card-title text-center">
-              <router-link
-                :to="{
-                  name: 'Home',
-                }"
-                ><a>Dog Grooming Services</a></router-link
-              >
+              Dog Grooming Services
             </h5>
-            <p class="card-text text-center">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus
-              perspiciatis est suscipit eius ratione perferendis cumque aut
-              ipsum voluptate sint!
+            <p class="card-text">
+              On this page you can find out more about the techniques we use,
+              how they can benefit you and your dog and the results you can
+              expect. <br />
+              <br />
+              We cater for all breeds and types, the techniques and styles below
+              may be modified to suit your pet. This may be determined by your
+              own personal request or by the coat condition, health, temperament
+              or behaviour of your pet.
             </p>
           </div>
           <div class="card-footer"></div>
@@ -37,20 +37,18 @@
           />
           <div class="card-body">
             <h5 class="card-title text-center">
-              <router-link
-                :to="{
-                  name: 'Home',
-                }"
-                ><a>Dog Sitting Services</a>
-              </router-link>
+              Dog Sitting Services
             </h5>
-            <p class="card-text text-center">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi
-              cupiditate quo odit veritatis exercitationem voluptate tempora
-              quis optio odio dicta. Nobis eligendi minima sit inventore est.
-              Similique, doloremque cumque eius ipsa sunt rem. Sed ex fuga,
-              temporibus autem quia animi accusamus iure facilis vero eveniet in
-              dicta a enim asperiores!
+            <p class="card-text">
+              We believe in providing individual care for your dog, so they have
+              the very best experience of dog sitting. <br />
+              <br />
+              Our hosts are dog sitters who are committed to maintaining your
+              dog’s home life and routines, as well as accommodating their likes
+              and dislikes.
+              <br />
+              <br />
+              <b>Choose the best!</b>
             </p>
           </div>
           <div class="card-footer"></div>
@@ -65,19 +63,16 @@
           />
           <div class="card-body">
             <h5 class="card-title text-center">
-              <router-link
-                :to="{
-                  name: 'Home',
-                }"
-                ><a>
-                  Dog Walking Services
-                </a>
-              </router-link>
+              Dog Walking Services
             </h5>
-            <p class="card-text text-center">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-              est unde iste dignissimos, laboriosam porro quisquam beatae
-              consequuntur molestiae officia!
+            <p class="card-text">
+              Trusting someone else to look after your faithful friend can be a
+              daunting task, but Fuzzies is here to help! <br />
+              <br />
+              Perhaps you’re seeking a temporary dog walker as you work around
+              other commitments. Or maybe you’re looking for someone to care for
+              your cuddly canine on a long-term basis. Either way, our
+              easy-to-use platform will ensure your requirements are met.
             </p>
           </div>
           <div class="card-footer"></div>

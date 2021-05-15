@@ -3,8 +3,8 @@
     <h1 class="text-center py-3">Contact form</h1>
     <div ref="success" class="d-flex justify-content-center"></div>
 
-    <div class="body d-flex justify-content-evenly">
-      <form @submit.prevent="handleSubmit" class="my-3">
+    <div class="d-flex justify-content-evenly">
+      <form @submit.prevent="handleSubmit" class="my-3 body">
         <div class="input-group mb-2 mr-sm-2">
           <div class="input-group-prepend">
             <div class="input-group-text">
@@ -69,10 +69,8 @@
 import useCollection from "@/composables/useCollection";
 import { ref } from "vue";
 import { timestamp } from "../firebase/config";
-import ContactToast from "@/components/Toasts/ContactToast";
 
 export default {
-  components: { ContactToast },
   setup() {
     const { error, addDoc } = useCollection("contact-us");
 
@@ -95,7 +93,7 @@ export default {
       isPending.value = false;
       if (!error.value) {
         let html = `
-         <h1 class="my-2 success">Thank you for contacting us.<br/>
+         <h1 class="my-2 success text-center">Thank you for contacting us.<br/>
         We will get back to you as soon as possible.
         </h1>
     `;
@@ -127,6 +125,7 @@ export default {
 <style scoped>
 .body {
   opacity: 75%;
+  min-width: 75%;
 }
 .input-group-text {
   font-size: 2rem;
@@ -138,5 +137,8 @@ export default {
       rgba(50, 58, 69, 0.74)
     ),
     url(../assets/images/contact.jpg);
+}
+.input-group-text {
+  border-radius: 0;
 }
 </style>
