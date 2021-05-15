@@ -71,19 +71,16 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:hover,
+a.router-link-active {
+  border-bottom: 2px solid rgb(53 205 151);
   color: white;
-  font-weight: lighter;
-}
-
-.router-link-active {
-  color: rgb(53 205 151);
   font-weight: normal;
+  width: max-content;
 }
 
-.router-link-active:hover {
-  color: rgb(53 205 151);
-  font-weight: lighter;
+.no-border {
+  border-bottom: none !important;
 }
 
 .sticky-nav {
@@ -95,19 +92,6 @@ a:hover {
   order: 0;
   background-color: rgba(12, 32, 55, 0.5);
 }
-
-/* .navbar .navbar-brand a {
-  padding: 1rem 0;
-  display: block;
-  text-decoration: none;
-} */
-
-/* .navbar-brand {
-  font-size: 3.2rem;
-  color: white;
-  font-weight: bold;
-  font-style: italic;
-} */
 
 .navbar-expand-lg .navbar-nav .nav-link.active .router-link-active:hover {
   color: black;
@@ -158,9 +142,9 @@ a:hover {
 }
 
 .btn:hover {
-  background-color: black;
+  background-color: rgba(0, 0, 0, 25%);
   color: white;
-  font-weight: 900;
+  font-weight: lighter;
 }
 
 .card a {
