@@ -26,7 +26,7 @@ const requireAuth = (to, from, next) => {
 const requireNoAuth = (to, from, next) => {
   let user = projectAuth.currentUser;
   if (user) {
-    next();
+    next("/");
   } else {
     next();
   }
@@ -47,7 +47,14 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    beforeEnter: requireNoAuth,
+    beforeEnter: (to, from, next) => {
+      let user = projectAuth.currentUser;
+      if (user.displayName == `Support`) {
+        next({ name: "ChatSupport" });
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/login",
@@ -65,13 +72,11 @@ const routes = [
     path: "/services",
     name: "Services",
     component: Services,
-    beforeEnter: requireNoAuth,
   },
   {
     path: "/contact-us",
     name: "Contact",
     component: Contact,
-    beforeEnter: requireNoAuth,
   },
   {
     path: "/enquiry/create",
