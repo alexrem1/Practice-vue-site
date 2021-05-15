@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <div class="error" v-if="error">{{ error }}</div>
-
     <div v-for="doc in formattedDocuments" :key="doc.id">
-      <p class="mt-5 text-center">
-        <mark> You have been a Fuzzies member for {{ doc.createdAt }}</mark>
-      </p>
+      <div class="d-flex justify-content-center">
+        <p class="mt-5 text-center mark">
+          You have been a Fuzzies member for {{ doc.createdAt }}
+        </p>
+      </div>
       <form class="mt-5">
         <div class="row mt-3 text-center">
           <div class="col-12 col-lg-6">
-            <input class="m-1" type="text" :value="user.displayName" disabled />
+            <input class="m-1" type="text" :value="doc.displayName" disabled />
           </div>
           <div class="col-12 col-lg-6">
-            <input class="m-1" type="text" :value="user.email" disabled />
+            <input class="m-1" type="text" :value="doc.email" disabled />
           </div>
           <div class="col-12 col-lg-6">
             <input class="m-1" type="text" :value="doc.firstName" disabled />
@@ -123,6 +123,7 @@
         </div>
       </div>
     </div>
+    <div class="error" v-if="error">{{ error }}</div>
   </div>
 </template>
 
@@ -205,5 +206,11 @@ export default {
 <style scoped>
 .container {
   min-height: 85vh;
+}
+
+.mark {
+  background-color: #fcf8e3;
+  color: black;
+  width: 50%;
 }
 </style>

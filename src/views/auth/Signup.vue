@@ -138,6 +138,8 @@ export default {
         createdAt: timestamp(),
         userId: user.value.uid,
         phoneNumber: phoneNumber.value,
+        displayName: displayName.value,
+        email: email.value,
       });
       if (!error.value) {
         console.log("User logged in");
