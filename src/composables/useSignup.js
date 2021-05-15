@@ -21,7 +21,7 @@ const signup = async (email, password, displayName) => {
     error.value = null;
     isPending.value = false;
 
-    console.log(res.user);
+    // console.log(res.user);
 
     return res;
   } catch (err) {
