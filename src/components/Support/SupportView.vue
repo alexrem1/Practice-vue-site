@@ -11,9 +11,6 @@
             <p>Created by {{ enquiry.userName }}</p>
             <!-- replace created by -->
           </div>
-          <div class="song-number">
-            <p>{{ enquiry.enquireAmount.length }}</p>
-          </div>
         </div>
       </router-link>
     </div>
@@ -66,8 +63,5 @@ img {
 }
 .info {
   margin: 0 30px;
-}
-.song-number {
-  margin-left: auto;
 }
 </style>

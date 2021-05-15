@@ -2,13 +2,7 @@
   <div class="sticky-nav" id="nav">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <router-link
-          :to="{
-            name: 'Home',
-          }"
-          ><img src="@/assets/images/Fuzzies.png" alt="Home"
-        /></router-link>
-        <!-- <span class="navbar-brand">Fuzzies</span> -->
+        <img src="@/assets/images/Fuzzies.png" alt="Home" />
         <button
           class="navbar-toggler"
           type="button"
@@ -83,7 +77,7 @@ export default {
       await logout();
       if (!error.value) {
         console.log("User logged out");
-        router.push({ name: "Home" });
+        router.push({ name: "Login" });
       }
     };
 

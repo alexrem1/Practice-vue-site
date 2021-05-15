@@ -2,12 +2,7 @@
   <div class="sticky-nav" id="nav">
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <router-link
-          :to="{
-            name: 'Home',
-          }"
-          ><img src="@/assets/images/Fuzzies.png" alt="Home"
-        /></router-link>
+        <img src="@/assets/images/Fuzzies.png" alt="Home" />
         <button
           class="navbar-toggler"
           type="button"
@@ -96,6 +91,7 @@
                 :to="{
                   name: 'Signup',
                 }"
+                class="no-border"
               >
                 <button
                   class="btn d-md-block d-lg-none d-xl-none m-1"
@@ -108,6 +104,7 @@
                 :to="{
                   name: 'Login',
                 }"
+                class="no-border"
               >
                 <button class="btn m-1">
                   Log in
