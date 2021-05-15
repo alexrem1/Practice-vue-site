@@ -31,7 +31,7 @@
       <div class="heading pt-5">
         <mark>Enter the support chat below for help with your enquiry.</mark>
       </div>
-      <ChatWindow />
+      <ChatWindow :chatEnquiry="enquiry" />
     </div>
   </div>
 </template>
@@ -55,17 +55,14 @@ export default {
     const { deleteImage } = useStorage();
     const router = useRouter();
 
-    const toggleCompleted = () => {
-      completed.value = !completed.value;
-      const delay = setTimeout(() => {
-        router.push({ name: "ChatSupport" });
-      }, 3000);
-    };
-
     const handleDelete = async () => {
       await deleteImage(enquiry.value.filePath);
       await deleteDoc();
+
       router.push({ name: "Activity" });
+      alert(
+        "We hope we solved your enquiry and if you have any other questions, please don't hesitate to contact us or make another enquiry"
+      );
     };
 
     const ownershipSupport = computed(() => {
@@ -79,7 +76,6 @@ export default {
       enquiry,
       ownershipSupport,
       handleDelete,
-      toggleCompleted,
     };
   },
 };

@@ -1,18 +1,32 @@
 <template>
   <div class="chat-box">
-    <div v-if="error">{{ error }}</div>
     <!-- show chat -->
     <div v-show="showChat">
-      <div v-if="documents" class="messages" ref="messages">
+      <!-- <div v-if="documents" class="messages" ref="messages">
         <div
           v-for="doc in formattedDocuments"
           :key="doc.id"
-          :class="
-            doc.user == user.displayName ? `message current-user` : `message`
-          "
+          :class="doc.user == userName ? `message ` : `message current-user`"
         >
           <div class="message-inner">
             <span class="created-at">{{ doc.createdAt }} ago</span>
+            <span class="user">{{ doc.user }}:</span>
+            <span class="content">{{ doc.message }}</span>
+          </div>
+        </div>
+      </div> -->
+      <div v-if="chatEnquiry" class="messages" ref="messages">
+        <div
+          v-for="doc in chatEnquiry.supportChat"
+          :key="doc.id"
+          :class="
+            doc.user == chatEnquiry.userName
+              ? `message `
+              : `message current-user`
+          "
+        >
+          <div class="message-inner">
+            <span class="time">{{ doc.time }}</span>
             <span class="user">{{ doc.user }}:</span>
             <span class="content">{{ doc.message }}</span>
           </div>
@@ -29,8 +43,6 @@
     </div>
   </div>
   <div class="text-center">
-    <div v-if="errorAddDoc" class="error mb-3">{{ errorAddDoc }}</div>
-
     <button class="btn mb-5" @click="toggleChat">
       {{ showChat ? "Close support chat" : "Open support chat" }}
     </button>
@@ -42,45 +54,39 @@ import getCollection from "@/composables/getCollection";
 import { formatDistanceToNow } from "date-fns";
 import { computed, onUpdated, ref } from "vue";
 import getUser from "@/composables/getUser";
-import useCollection from "@/composables/useCollection";
+import useDocument from "@/composables/useDocument";
 import { timestamp } from "@/firebase/config";
+import moment from "moment";
 
 export default {
-  setup() {
+  props: ["chatEnquiry"],
+  setup(props) {
     const { user } = getUser();
-    const { error, documents } = getCollection("support-chat");
-    const { error: errorAddDoc, addDoc } = useCollection("support-chat");
+    const { updateDoc } = useDocument("enquiries", props.chatEnquiry.id);
     const showChat = ref(false);
     const message = ref("");
     const textarea = ref(null);
 
-    // computed documents to a more appealing structure
-    const formattedDocuments = computed(() => {
-      if (documents.value) {
-        return documents.value.map((doc) => {
-          let time = formatDistanceToNow(doc.createdAt.toDate());
-          return { ...doc, createdAt: time };
-        });
-      }
-    });
-
     // add a message
     const handleSubmit = async () => {
+      const time = moment()
+        .locale("en-au")
+        .calendar();
       const chat = {
         message: message.value,
         user: user.value.displayName,
-        createdAt: timestamp(),
         userId: user.value.uid,
+        time: time,
       };
       if (message.value) {
-        await addDoc(chat);
-      } else {
-        errorAddDoc.value = "Enter a message";
-      }
-      if (!error.value) {
+        await updateDoc({
+          supportChat: [...props.chatEnquiry.supportChat, chat],
+        });
         message.value = "";
       } else {
-        error.value = "You do not own this enquiry.";
+        textarea.value.placeholder =
+          "You must type if you want your message sent.";
+        console.log(textarea.value);
       }
     };
 
@@ -88,8 +94,12 @@ export default {
     const messages = ref(null);
 
     onUpdated(() => {
-      messages.value.scrollTop = messages.value.scrollHeight;
-      textarea.value.focus();
+      if (messages.value) {
+        messages.value.scrollTop = messages.value.scrollHeight;
+        textarea.value.focus();
+      } else {
+        textarea.value.focus();
+      }
     });
 
     // bring up the support chat
@@ -101,14 +111,10 @@ export default {
       handleSubmit,
       showChat,
       user,
-      error,
-      documents,
-      formattedDocuments,
       message,
       messages,
       toggleChat,
       textarea,
-      errorAddDoc,
     };
   },
 };
@@ -136,13 +142,21 @@ export default {
   flex: 1 1 100%;
   margin: 2rem 0rem 2rem 0rem;
 }
+.chat-box .message {
+  border-top: 2px solid rgb(53 205 151/ 25%);
+  margin-bottom: 2rem;
+}
 
-.chat-box .messages .message-inner .created-at {
+.chat-box .message .message-inner {
+  margin-top: 2rem;
+}
+
+.chat-box .messages .message-inner .time {
   font-weight: bolder;
   display: block;
   color: #999;
   font-size: 12px;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   margin-left: 2rem;
 }
 
@@ -173,7 +187,7 @@ export default {
   max-width: 75%;
   color: rgb(53 205 151 / 61%);
 }
-.chat-box .messages .current-user .message-inner .created-at {
+.chat-box .messages .current-user .message-inner .time {
   margin-right: 3rem;
 }
 

@@ -97,7 +97,7 @@ export default {
           userName: user.value.displayName,
           coverUrl: url.value,
           filePath: filePath.value,
-          enquireAmount: [],
+          supportChat: [],
           createdAt: timestamp(),
         });
         // end
