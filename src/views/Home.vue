@@ -6,7 +6,7 @@
           <h1 class="heading ">
             We're the people you didn't know you needed!
             <br />
-            <router-link :to="{ name: 'Signup' }">
+            <router-link :to="{ name: 'Signup' }" class="no-border">
               <button class="btn">Sign up</button>
             </router-link>
             with
