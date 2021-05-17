@@ -44,7 +44,11 @@
               </router-link>
             </li>
 
-            <li class="nav-item">
+            <li
+              class="nav-item"
+              style="
+    width: max-content"
+            >
               <div v-if="user">
                 <router-link
                   :to="{
@@ -80,38 +84,36 @@
             </li>
           </ul>
 
-          <form class="">
-            <div v-if="user">
-              <button @click.prevent="handleClick" class="btn">
-                Log out
+          <div v-if="user">
+            <button @click.prevent="handleClick" class="btn">
+              Log out
+            </button>
+          </div>
+          <div v-else class="d-flex justify-content-start">
+            <router-link
+              :to="{
+                name: 'Signup',
+              }"
+              class="no-border"
+            >
+              <button
+                class="btn d-md-block d-lg-none d-xl-none m-1"
+                type="submit"
+              >
+                Sign up
               </button>
-            </div>
-            <div v-else>
-              <router-link
-                :to="{
-                  name: 'Signup',
-                }"
-                class="no-border"
-              >
-                <button
-                  class="btn d-md-block d-lg-none d-xl-none m-1"
-                  type="submit"
-                >
-                  Sign up
-                </button>
-              </router-link>
-              <router-link
-                :to="{
-                  name: 'Login',
-                }"
-                class="no-border"
-              >
-                <button class="btn m-1">
-                  Log in
-                </button>
-              </router-link>
-            </div>
-          </form>
+            </router-link>
+            <router-link
+              :to="{
+                name: 'Login',
+              }"
+              class="no-border"
+            >
+              <button class="btn m-1">
+                Log in
+              </button>
+            </router-link>
+          </div>
         </div>
       </div>
     </nav>
