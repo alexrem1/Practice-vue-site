@@ -37,7 +37,7 @@ const support = (to, from, next) => {
 
   if (user.displayName == `Support`) {
     next();
-  } else if (user.displayName != `Support`) {
+  } else {
     next({ name: "Home" });
   }
 };
@@ -47,6 +47,15 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    beforeEnter: (to, from, next) => {
+      let user = projectAuth.currentUser;
+
+      if (user && user.displayName == `Support`) {
+        next({ name: "ChatSupport" });
+      } else {
+        next();
+      }
+    },
   },
   {
     path: "/login",
