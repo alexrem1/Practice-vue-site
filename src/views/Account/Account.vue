@@ -1,10 +1,11 @@
 <template>
   <div class="container">
     <div class="d-none d-md-block ">
-      <div class="d-flex justify-content-evenly">
+      <div class="d-flex justify-content-evenly pt-5">
         <router-link :to="{ name: 'Activity' }">
           <h1>Account Activity</h1>
         </router-link>
+
         <div v-for="doc in documents" :key="doc.id">
           <router-link :to="{ name: 'Details', params: { id: doc.id } }">
             <h1>Account Details</h1>
@@ -14,12 +15,12 @@
     </div>
     <div class="d-block d-sm-block d-md-none d-lg-none d-xl-none">
       <div class="row text-center">
-        <div class="col-12 pb-5">
+        <div class="col-12 my-5">
           <router-link :to="{ name: 'Activity' }">
             <h1>Account Activity</h1>
           </router-link>
         </div>
-        <div class="col-12 pt-5">
+        <div class="col-12 my-5">
           <div v-for="doc in documents" :key="doc.id">
             <router-link :to="{ name: 'Details', params: { id: doc.id } }">
               <h1>Account Details</h1>
@@ -28,6 +29,7 @@
         </div>
       </div>
     </div>
+    <router-view />
   </div>
 </template>
 
@@ -51,7 +53,6 @@ export default {
 
 <style scoped>
 .container {
-  padding-top: 115px;
   min-height: 88vh;
 }
 </style>

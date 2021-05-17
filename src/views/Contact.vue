@@ -40,7 +40,6 @@
             </div>
           </div>
           <input
-            type="number"
             class="form-control"
             placeholder="Phone"
             v-model="phone"
@@ -50,7 +49,7 @@
         <div class="form-group">
           <textarea
             class="form-control"
-            rows="10"
+            rows="5"
             placeholder="Your message..."
             v-model="message"
             required

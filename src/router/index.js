@@ -47,14 +47,6 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
-    beforeEnter: (to, from, next) => {
-      let user = projectAuth.currentUser;
-      if (user.displayName == `Support`) {
-        next({ name: "ChatSupport" });
-      } else {
-        next();
-      }
-    },
   },
   {
     path: "/login",
@@ -95,20 +87,20 @@ const routes = [
     path: "/account",
     name: "Account",
     component: Account,
+    children: [
+      {
+        path: "activity",
+        name: "Activity",
+        component: Activity,
+      },
+      {
+        path: "details/:id",
+        name: "Details",
+        component: Details,
+        props: true,
+      },
+    ],
     beforeEnter: requireAuth,
-  },
-  {
-    path: "/account/activity",
-    name: "Activity",
-    component: Activity,
-    beforeEnter: requireAuth,
-  },
-  {
-    path: "/account/details/:id",
-    name: "Details",
-    component: Details,
-    beforeEnter: requireAuth,
-    props: true,
   },
   {
     path: "/chat-support",

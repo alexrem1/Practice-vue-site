@@ -1,13 +1,12 @@
 <template>
   <div class="container ">
+    <div class="text-muted d-flex justify-content-center heading mb-5">
+      Because our service is free and we have a limited amount of specialists on
+      hand at all times,
+      <br />
+      please make an enquiry. We will get back to you within 1-2 working days.
+    </div>
     <form @submit.prevent="handleSubmit">
-      <div class="text-muted d-flex justify-content-center heading mb-5">
-        Because our service is free and we have a limited amount of specialists
-        on hand at all times,
-        <br />
-        please make an enquiry. We will get back to you within 1-2 working days.
-      </div>
-
       <!-- Subject  -->
       <div class="mb-3 d-flex justify-content-center">
         <label>Subject</label>
@@ -141,5 +140,8 @@ export default {
 <style scoped>
 .form-control {
   width: 50%;
+}
+.heading {
+  font-size: 2.2rem;
 }
 </style>

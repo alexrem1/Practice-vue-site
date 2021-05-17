@@ -6,6 +6,8 @@
           You have been a Fuzzies member for {{ doc.createdAt }}
         </p>
       </div>
+      <div ref="updateSuccessful" class="success"></div>
+
       <form class="mt-5">
         <div class="row mt-3 text-center">
           <div class="col-12 col-lg-6">
@@ -43,12 +45,11 @@
           Update your details
         </button>
       </div>
-      <div ref="updateSuccessful" class="success"></div>
 
       <!-- update user details -->
       <div v-if="showUpdate">
         <div class="container">
-          <form @submit.prevent="handleUpdate">
+          <form @submit.prevent="handleUpdate" class="mb-5">
             <div class="row mt-5 text-center">
               <h5 class="mb-3">Update your details down below</h5>
               <div class="col-12 col-lg-6">
@@ -99,7 +100,6 @@
               <div class="col-12 col-lg-6">
                 <input
                   class="m-1"
-                  type="number"
                   v-model="phoneNumber"
                   required
                   placeholder="Phone no."
@@ -166,10 +166,11 @@ export default {
       });
       showUpdate.value = false;
       let html = `
-        <h1 class="mt-2">Your details have successfully been updated.</h1>
+        <h1 class="mt-2 d-flex justify-content-center success">Your details have successfully been updated.</h1>
     `;
       setTimeout(() => {
         updateSuccessful.value.innerHTML += html;
+        updateSuccessful.value = scrollTo(0, 0);
       });
     };
 
@@ -204,10 +205,6 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  min-height: 85vh;
-}
-
 .mark {
   background-color: #fcf8e3;
   color: black;

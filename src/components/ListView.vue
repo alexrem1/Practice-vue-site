@@ -1,6 +1,6 @@
 <template>
   <div v-for="enquiry in enquiries" :key="enquiry.id">
-    <div v-show="showEnquiry">
+    <div v-show="showEnquiry" class="my-5">
       <router-link :to="{ name: 'EnquiryDetails', params: { id: enquiry.id } }">
         <div class="single">
           <div class="thumbnail">
