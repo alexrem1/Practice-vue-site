@@ -2,6 +2,8 @@
 
 ## A simple vue x firestore website with dedicated chat support
 
+![alt](@/images/responsiveness.png)
+
 [You can view my website here.](https://practice-7531a.firebaseapp.com/)
 
 > Public users can only sign up or contact Fuzzies.
