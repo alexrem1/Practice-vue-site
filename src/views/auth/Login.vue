@@ -30,10 +30,18 @@
           <button v-if="isPending" class="btn mb-3 mt-3" disabled>
             Loading
           </button>
-          <div class="form-text mt-3">
-            Don't have an account?
-            <router-link :to="{ name: 'Signup' }"> Sign up</router-link>
+          <div class="row text-center">
+            <div class="col-12 form-text mt-3">
+              Don't have an account?
+              <router-link :to="{ name: 'Signup' }"> Sign up</router-link>
+            </div>
+            <div class="col-12 mt-3" @click.prevent="toggleForgot">
+              <a> Forgot your password?</a>
+            </div>
           </div>
+        </div>
+        <div v-if="showForgot" class="my-5">
+          <ForgotPassword />
         </div>
       </form>
     </div>
@@ -43,9 +51,11 @@
 <script>
 import useLogin from "@/composables/useLogin";
 import { onMounted, ref } from "vue";
-import router, { useRouter } from "vue-router";
+import { useRouter } from "vue-router";
+import ForgotPassword from "@/components/ForgotPassword";
 
 export default {
+  components: { ForgotPassword },
   setup() {
     const { error, login, isPending } = useLogin();
     const router = useRouter();
@@ -53,6 +63,11 @@ export default {
     const email = ref("");
     const password = ref("");
     const emailFocus = ref(null);
+    const showForgot = ref(false);
+
+    const toggleForgot = () => {
+      showForgot.value = !showForgot.value;
+    };
 
     onMounted(() => {
       emailFocus.value.focus();
@@ -66,7 +81,16 @@ export default {
       }
     };
 
-    return { email, password, handleSubmit, error, isPending, emailFocus };
+    return {
+      email,
+      password,
+      handleSubmit,
+      error,
+      isPending,
+      emailFocus,
+      showForgot,
+      toggleForgot,
+    };
   },
 };
 </script>

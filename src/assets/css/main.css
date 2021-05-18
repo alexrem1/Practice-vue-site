@@ -69,6 +69,7 @@ a.router-link-active {
   color: white;
   font-weight: normal;
   width: max-content;
+  cursor: pointer;
 }
 
 .no-border {
