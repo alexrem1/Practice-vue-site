@@ -34,6 +34,9 @@
       <ChatWindow :chatEnquiry="enquiry" />
     </div>
   </div>
+  <div v-else>
+    <Spinner />
+  </div>
 </template>
 
 <script>
@@ -44,9 +47,10 @@ import getUser from "@/composables/getUser";
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
 import ChatWindow from "@/components/Support/ChatWindow.vue";
+import Spinner from "@/components/Spinner.vue";
 
 export default {
-  components: { ChatWindow },
+  components: { ChatWindow, Spinner },
   props: ["id"],
   setup(props) {
     const { error, document: enquiry } = getDocument("enquiries", props.id);
@@ -87,7 +91,7 @@ export default {
 }
 .card {
   color: rgb(53 205 151 / 61%);
-  font-weight: bolder;
+  font-weight: 900;
   background-color: rgb(232, 235, 229);
 }
 </style>
