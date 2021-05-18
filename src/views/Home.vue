@@ -140,25 +140,6 @@ export default {};
   text-align: center;
 }
 
-#md-port .heading {
-  font-size: 2rem;
-}
-#sm-port .heading {
-  font-size: 1.5rem;
-  font-weight: lighter;
-  line-height: 1.2;
-  text-align: center;
-}
-
-#xs-port .heading {
-  font-size: 1.4rem;
-  font-weight: lighter;
-  line-height: 1.2;
-  text-align: center;
-  margin-top: 0px;
-  margin-bottom: 8px;
-}
-
 .btn {
   font-size: 2rem;
   font-weight: lighter;
@@ -176,30 +157,6 @@ u {
 
 a {
   color: rgb(53 205 151) !important;
-}
-
-#xs-port .btn {
-  background-color: rgb(53 205 151 / 61%);
-  color: white;
-  border-radius: 49px;
-  padding: 0.5rem 1.5rem;
-  font-size: 0.8rem;
-}
-
-#sm-quote .heading {
-  font-size: 1.2rem;
-  font-weight: lighter;
-  line-height: 1.2;
-  text-align: center;
-  margin-bottom: 8px;
-}
-
-#md-quote .heading {
-  font-size: 1.6rem;
-  font-weight: lighter;
-  line-height: 1.2;
-  text-align: center;
-  margin-bottom: 8px;
 }
 
 .img-quote {
