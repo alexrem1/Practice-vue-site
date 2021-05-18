@@ -1,6 +1,6 @@
-# A simple vue x firestore website with dedicated chat support
+# Fuzzies
 
-## Fuzzies
+## A simple vue x firestore website with dedicated chat support
 
 > Public users can only sign up or contact Fuzzies.
 
