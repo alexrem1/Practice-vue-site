@@ -1,7 +1,11 @@
-## A simple vue x firestore website with chat support
+# A simple vue x firestore website with dedicated chat support
 
-> Public can only sign up or contact us
+## Fuzzies
+
+> Public users can only sign up or contact Fuzzies.
+
 > Logged in users can create an enquiry, delete said enquiry which contains image path to firestore storage, enter chat support to speak with the support team and update the details they signed up with.
+
 > Support admin has access to all enquiries and their respective support chats
 
 Since starting this project I have learnt so much. I have had to go through many hours of just researching a bug I didn't understand and rewrite whole sections as my understanding deepened.
