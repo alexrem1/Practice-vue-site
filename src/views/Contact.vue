@@ -123,7 +123,6 @@ export default {
 
 <style scoped>
 .body {
-  opacity: 75%;
   min-width: 50%;
 }
 .input-group-text {
