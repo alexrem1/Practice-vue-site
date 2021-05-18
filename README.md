@@ -2,7 +2,7 @@
 
 ## A simple vue x firestore website with dedicated chat support
 
-![alt](@/images/responsiveness.png)
+![Landing Page](src/assets/images/responsiveness.png)
 
 [You can view my website here.](https://practice-7531a.firebaseapp.com/)
 
